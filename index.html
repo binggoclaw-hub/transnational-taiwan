@@ -5,159 +5,240 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>德安台灣 | 新加坡商德安中華台灣分公司</title>
     <style>
+        :root {
+            --primary-color: #0b1622;
+            --secondary-color: #f39c12;
+            --bg-light: #f8fafc;
+            --text-main: #334155;
+            --text-light: #64748b;
+        }
         body {
             font-family: 'Helvetica Neue', Helvetica, Arial, '微軟正黑體', sans-serif;
-            margin: 0;
-            padding: 0;
-            color: #333;
-            line-height: 1.6;
+            margin: 0; padding: 0; color: var(--text-main); line-height: 1.7; background-color: #fff;
         }
+        /* 導覽列 */
         header {
-            background: #fff;
-            padding: 15px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95); padding: 15px 8%; display: flex;
+            justify-content: space-between; align-items: center; box-shadow: 0 1px 10px rgba(0,0,0,0.05);
+            position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(5px);
         }
-        .logo { font-size: 20px; font-weight: bold; color: #0b1622; }
-        nav a { margin: 0 15px; text-decoration: none; color: #333; font-weight: 500; }
-        nav a:hover { color: #f39c12; }
-        .btn-login {
-            background: #0b1622; color: #fff; padding: 8px 16px; border-radius: 4px; text-decoration: none;
-        }
-        /* Hero Section 動畫設定 */
-        .hero-container {
-            position: relative; width: 100%; height: 70vh; overflow: hidden; background: #0b1622;
-        }
+        .logo { font-size: 22px; font-weight: 800; color: var(--primary-color); letter-spacing: 1px; }
+        nav a { margin: 0 15px; text-decoration: none; color: var(--text-main); font-weight: 600; font-size: 15px; transition: color 0.3s; }
+        nav a:hover { color: var(--secondary-color); }
+        .btn-login { background: var(--primary-color); color: #fff; padding: 10px 20px; border-radius: 30px; }
+        .btn-login:hover { background: var(--secondary-color); color: #fff; }
+
+        /* 主視覺橫幅 */
+        .hero-container { position: relative; width: 100%; height: 75vh; overflow: hidden; background: var(--primary-color); }
         .hero-bg {
-            position: absolute; inset: -6%;
-            background-image: url('02_台灣分公司_車輛與大樓.jpg');
-            background-size: cover; background-position: center;
-            animation: zoomIn 6s ease-in-out infinite alternate; transform-origin: center;
+            position: absolute; inset: -5%; 
+            background-image: url('02_台灣分公司_車輛與大樓.png'); /* 已修正為 .png */
+            background-size: cover; background-position: center; animation: zoomIn 8s ease-in-out infinite alternate;
         }
         .hero-overlay {
-            position: absolute; inset: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0.2));
+            position: absolute; inset: 0; background: linear-gradient(to top, rgba(11,22,34,0.8), rgba(11,22,34,0.3));
             display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
-            animation: fadeIn 6s ease-in-out infinite alternate;
         }
-        .hero-overlay h1 { color: #fff; font-size: 42px; margin: 0 0 10px; letter-spacing: 2px; }
-        .hero-overlay p { color: #e2e8f0; font-size: 20px; margin: 0 0 20px; }
-        .hero-overlay .sub-text { font-size: 14px; color: #ccc; }
-        
-        @keyframes zoomIn { 0% { transform: scale(1); } 100% { transform: scale(1.1); } }
-        @keyframes fadeIn { 0% { opacity: 0.5; } 100% { opacity: 1; } }
+        .hero-overlay h1 { color: #fff; font-size: 48px; margin: 0 0 15px; font-weight: 700; letter-spacing: 3px; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+        .hero-overlay p { color: #e2e8f0; font-size: 22px; margin: 0 0 25px; font-weight: 300; }
+        .hero-overlay .sub-text { font-size: 15px; color: #cbd5e1; background: rgba(255,255,255,0.1); padding: 8px 20px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.2); }
 
-        /* 區塊共用設定 */
-        section { padding: 60px 10%; }
-        h2 { text-align: center; font-size: 32px; margin-bottom: 40px; color: #0b1622; }
-        
+        @keyframes zoomIn { 0% { transform: scale(1); } 100% { transform: scale(1.08); } }
+
+        /* 區塊共用 */
+        section { padding: 80px 8%; }
+        .section-title { text-align: center; font-size: 36px; font-weight: 700; margin-bottom: 50px; color: var(--primary-color); position: relative; }
+        .section-title::after { content: ''; width: 60px; height: 3px; background: var(--secondary-color); display: block; margin: 15px auto 0; }
+
         /* 關於我們 */
-        .about-content { display: flex; gap: 40px; align-items: center; }
-        .about-text { flex: 1; font-size: 16px; }
+        .about-content { display: flex; gap: 50px; align-items: center; }
+        .about-text { flex: 1; font-size: 17px; color: var(--text-light); text-align: justify; }
+        .about-text p { margin-bottom: 20px; }
         .about-image { flex: 1; }
-        .about-image img { width: 100%; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .about-image img { width: 100%; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
 
-        /* 服務項目四宮格 */
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
-        .service-card { background: #f9f9f9; padding: 20px; border-radius: 8px; text-align: center; transition: transform 0.3s; }
-        .service-card:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-        .service-card img { width: 100%; height: 180px; object-fit: cover; border-radius: 4px; margin-bottom: 15px; }
-        .service-card h3 { color: #0b1622; margin-bottom: 10px; }
-        .service-card p { font-size: 14px; color: #555; margin-bottom: 15px; }
-        .service-card a { display: inline-block; padding: 8px 15px; background: #e0e0e0; color: #333; text-decoration: none; border-radius: 4px; font-size: 14px; }
+        /* 核心服務 */
+        .bg-gray { background-color: var(--bg-light); }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; }
+        .service-card { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: transform 0.3s, box-shadow 0.3s; }
+        .service-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+        .service-card img { width: 100%; height: 200px; object-fit: cover; }
+        .service-content { padding: 25px; }
+        .service-content h3 { color: var(--primary-color); margin-top: 0; font-size: 20px; }
+        .service-content p { color: var(--text-light); font-size: 15px; margin-bottom: 20px; }
+        .service-content a { color: var(--secondary-color); font-weight: 600; text-decoration: none; font-size: 15px; }
+        .service-content a:hover { text-decoration: underline; }
+
+        /* 聯絡我們 */
+        .contact-wrapper { display: flex; gap: 50px; flex-wrap: wrap; }
+        .contact-info-block { flex: 1; min-width: 300px; }
+        .contact-form-block { flex: 1; min-width: 300px; background: #fff; padding: 35px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+        
+        .contact-info-block h3 { color: var(--primary-color); font-size: 24px; margin-top: 0; margin-bottom: 20px; }
+        .contact-info-block p { color: var(--text-light); font-size: 16px; margin: 8px 0; }
+        .contact-info-block strong { color: var(--primary-color); }
+        
+        /* 據點表格 */
+        .branch-table { width: 100%; border-collapse: collapse; margin-top: 25px; font-size: 15px; }
+        .branch-table th, .branch-table td { padding: 12px; text-align: left; border-bottom: 1px solid #e2e8f0; }
+        .branch-table th { background-color: var(--bg-light); color: var(--primary-color); font-weight: 600; }
+        .branch-table tr:hover { background-color: #f1f5f9; }
+
+        /* 表單設計 */
+        .form-group { margin-bottom: 20px; }
+        .form-control { width: 100%; padding: 12px 15px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 15px; box-sizing: border-box; font-family: inherit; transition: border-color 0.3s; }
+        .form-control:focus { outline: none; border-color: var(--secondary-color); }
+        textarea.form-control { resize: vertical; min-height: 120px; }
+        .btn-submit { background: var(--secondary-color); color: #fff; border: none; padding: 14px 25px; font-size: 16px; font-weight: 600; border-radius: 6px; cursor: pointer; width: 100%; transition: background 0.3s; }
+        .btn-submit:hover { background: #e67e22; }
+
+        /* Google 地圖 */
+        .map-container { margin-top: 30px; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
 
         /* Footer */
-        footer { background: #0b1622; color: #fff; padding: 40px 10%; text-align: center; }
-        footer p { margin: 5px 0; font-size: 14px; color: #aaa; }
+        footer { background: var(--primary-color); color: #94a3b8; padding: 25px 8%; text-align: center; font-size: 14px; }
         
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
             .about-content { flex-direction: column; }
-            .hero-overlay h1 { font-size: 28px; }
+            .contact-wrapper { flex-direction: column; }
+            .hero-overlay h1 { font-size: 32px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- 頂部導覽列 -->
     <header>
-        <div class="logo">德安台灣 Transnational Group</div>
+        <div class="logo">德安台灣</div>
         <nav>
             <a href="#about">關於我們</a>
             <a href="#services">核心服務</a>
             <a href="#contact">聯絡我們</a>
-            <a href="#" class="btn-login">線上服務</a>
+            <a href="#" class="btn-login">線上服務入口</a>
         </nav>
     </header>
 
-    <!-- 主視覺橫幅 -->
     <div class="hero-container">
         <div class="hero-bg"></div>
         <div class="hero-overlay">
             <h1>深耕金融物流四十餘年</h1>
             <p>德安台灣 — 值得信賴的安全物流夥伴</p>
-            <p class="sub-text">快遞叫件、單號追蹤、文件查詢，登入即可線上申請</p>
+            <span class="sub-text">快遞叫件、單號追蹤、文件查詢，登入即可線上申請</span>
         </div>
     </div>
 
-    <!-- 關於我們 -->
     <section id="about">
-        <h2>關於德安台灣</h2>
+        <h2 class="section-title">關於德安台灣</h2>
         <div class="about-content">
             <div class="about-text">
                 <p>新加坡商德安中華台灣分公司，自1982年在台灣設立以來，已深耕金融安全物流領域超過四十年。我們承襲新加坡德安集團（Transnational Group）自1973年建立的專業信譽，將亞太地區領先的物流與商業流程外包（BPO）經驗，落實在台灣每一條配送路線上。</p>
                 <p>目前德安台灣以台北為總部，於桃園、新竹、台中、台南、高雄設有六大營運據點，串聯全台超過250條配送路線，每日守護銀行、保險、金融機構最重要的票據、文件與資產。</p>
-                <p>我們深信，物流不只是「送達」，更是「信任」的傳遞。用四十年的實績，持續做金融業最值得信賴的合作夥伴。</p>
+                <p>我們深信，物流不只是「送達」，更是「信任」的傳遞。從專人遞送的每一次確認，到智能安全箱裡的每一筆紀錄，德安台灣用四十年的實績，持續做金融業最值得信賴的合作夥伴。</p>
             </div>
             <div class="about-image">
-                <img src="04_交控中心作業實景.jpg" alt="德安台灣交控中心">
+                <!-- 已修正為 .png -->
+                <img src="04_交控中心作業實景.png" alt="德安台灣交控中心"> 
             </div>
         </div>
     </section>
 
-    <!-- 核心服務 -->
-    <section id="services" style="background: #f1f5f9;">
-        <h2>核心服務項目</h2>
+    <section id="services" class="bg-gray">
+        <h2 class="section-title">核心服務項目</h2>
         <div class="services-grid">
             <div class="service-card">
-                <img src="08_保密袋Envopak示意圖.jpg" alt="銀行有價證券文件遞送">
-                <h3>銀行有價證券文件遞送服務</h3>
-                <p>專人專責、袋不離身，最高規格票據安全遞送，全面符合個資法規範。</p>
-                <a href="#contact">了解更多</a>
+                <!-- 已修正為 .png -->
+                <img src="08_保密袋Envopak示意圖.png" alt="銀行有價證券文件遞送">
+                <div class="service-content">
+                    <h3>銀行有價證券文件遞送</h3>
+                    <p>專人專責、袋不離身政策，採用國際保密袋與保密鎖，提供最高規格票據安全遞送。</p>
+                    <a href="#contact">了解更多 &rarr;</a>
+                </div>
             </div>
             <div class="service-card">
-                <img src="01_台灣分公司_外務人員與車輛.jpg" alt="非固定快遞服務">
-                <h3>非固定快遞服務 (GDM)</h3>
-                <p>彈性因應臨時取件需求，結合 GPS 安全箱定位機制，全程掌握運送軌跡。</p>
-                <a href="#contact">了解更多</a>
+                <!-- 已修正為 .png -->
+                <img src="01_台灣分公司_外務人員與車輛.png" alt="非固定快遞服務">
+                <div class="service-content">
+                    <h3>非固定快遞服務 (GDM)</h3>
+                    <p>彈性因應臨時取件需求，結合破壞袋與 GPS 安全箱定位機制，確保全程軌跡追蹤。</p>
+                    <a href="#contact">了解更多 &rarr;</a>
+                </div>
             </div>
             <div class="service-card">
-                <img src="07_FMTec智能安全箱實體照.jpg" alt="FMTec 智能安全箱">
-                <h3>FMTec 智能安全箱</h3>
-                <p>德國軍規等級防護，密碼＋RFID雙重管控，異常開啟即時示警，全程可稽核。</p>
-                <a href="#contact">了解更多</a>
+                <!-- 已修正為 .png -->
+                <img src="07_FMTec智能安全箱實體照.png" alt="FMTec 智能安全箱">
+                <div class="service-content">
+                    <h3>FMTec 智能安全箱</h3>
+                    <p>德國軍規等級防護，具備密碼＋RFID雙重管控與異常示警，提供實體最高安全防護。</p>
+                    <a href="#contact">了解更多 &rarr;</a>
+                </div>
             </div>
             <div class="service-card">
-                <img src="09_收發室作業實景_分揀.jpg" alt="收發室管理服務">
-                <h3>收發室管理服務</h3>
-                <p>條碼掃描追蹤、樓層分揀、系統化簽收，協助企業降低行政負擔與郵資成本控制。</p>
-                <a href="#contact">了解更多</a>
+                <!-- 已修正為 .png -->
+                <img src="09_收發室作業實景_分揀.png" alt="收發室管理服務">
+                <div class="service-content">
+                    <h3>收發室管理服務</h3>
+                    <p>MMS系統條碼掃描追蹤、精準樓層分揀，協助企業降低行政負擔，提供專屬顧問規劃。</p>
+                    <a href="#contact">了解更多 &rarr;</a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- 聯絡我們 & Footer -->
-    <footer id="contact">
-        <h3>聯絡我們</h3>
-        <p>總部地址：台北市中正區青島東路7號3樓</p>
-        <p>台北總公司客服：(02) 2351-0808 ｜ Email: bing.chuang@transnational-grp.com</p>
-        <br>
-        <p>全台營運據點：台北、桃園、新竹、台中、台南、高雄</p>
-        <hr style="border-color: #333; margin: 30px 0;">
+    <section id="contact">
+        <h2 class="section-title">聯絡我們</h2>
+        <div class="contact-wrapper">
+            <div class="contact-info-block">
+                <h3>德安台灣 營運總部</h3>
+                <p><strong>地址：</strong>台北市中正區青島東路7號3樓</p>
+                <p><strong>總公司專線：</strong>(02) 2351-0808</p>
+                <p><strong>客服信箱：</strong>bing.chuang@transnational-grp.com</p>
+                
+                <h3 style="margin-top: 40px; font-size: 20px;">全台營運據點聯絡表</h3>
+                <table class="branch-table">
+                    <thead>
+                        <tr>
+                            <th>據點</th>
+                            <th>聯絡電話</th>
+                            <th>聯絡窗口</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>台北總公司</td><td>(02) 2351-0808</td><td>莊主任</td></tr>
+                        <tr><td>台北作業中心</td><td>(02) 2391-4635</td><td>余主任</td></tr>
+                        <tr><td>桃園分公司</td><td>(03) 339-8171</td><td>莊督導／喻主任</td></tr>
+                        <tr><td>新竹分公司</td><td>(03) 528-0601</td><td>林組長／喻主任</td></tr>
+                        <tr><td>台中分公司</td><td>(04) 2225-6411</td><td>洪主任</td></tr>
+                        <tr><td>台南分公司</td><td>(06) 238-5777</td><td>黃督導</td></tr>
+                        <tr><td>高雄分公司</td><td>(07) 229-3868</td><td>生主任</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="contact-form-block">
+                <h3 style="margin-top: 0; color: var(--primary-color);">線上業務諮詢</h3>
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="您的姓名 / 公司名稱" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" placeholder="聯絡 Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="諮詢主旨 (如：收發室管理服務詢問)" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" placeholder="請簡述您的需求或留言訊息..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn-submit">送出留言</button>
+                </form>
+
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3614.733575916499!2d121.5201449!3d25.0430635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a97157833f41%3A0xb35a3962d3a33994!2zMTAw5Y-w5YyX5biC5Lit5q2j5Y2A6Z2S5bO25p2x6LevN-iZnw!5e0!3m2!1szh-TW!2stw!4v1700000000000!5m2!1szh-TW!2stw" width="100%" height="220" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
         <p>© 2026 新加坡商德安中華有限公司 台灣分公司 All Rights Reserved. transnational.com.tw</p>
     </footer>
 
