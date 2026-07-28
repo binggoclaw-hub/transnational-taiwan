@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>服務項目 | 德安台灣</title>
+<style>
+:root {
+  --primary-color: #0b1622;
+  --secondary-color: #c9971c;
+  --secondary-light: #e6b94a;
+  --bg-light: #f7f8fa;
+  --text-main: #33424f;
+  --text-light: #64748b;
+  --border-hair: #e5e9ee;
+}
+* { box-sizing: border-box; }
+body { font-family: 'Helvetica Neue', Helvetica, Arial, '微軟正黑體', sans-serif; margin:0; padding:0; color: var(--text-main); line-height:1.8; background:#fff; }
+header { background: rgba(255,255,255,0.97); padding:18px 8%; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-hair); position:sticky; top:0; z-index:1000; backdrop-filter: blur(6px); }
+.logo { display:flex; align-items:center; gap:10px; text-decoration:none; }
+.logo-mark { width:30px; height:30px; border-radius:6px; background: linear-gradient(135deg, var(--secondary-color), var(--secondary-light)); }
+.logo-text { font-size:20px; font-weight:800; color: var(--primary-color); letter-spacing:0.5px; }
+.logo-text span { display:block; font-size:10px; font-weight:500; letter-spacing:2px; color: var(--text-light); text-transform:uppercase; }
+nav { display:flex; align-items:center; }
+nav a { margin:0 16px; text-decoration:none; color: var(--text-main); font-weight:600; font-size:14px; letter-spacing:0.5px; transition:color .25s; }
+nav a:hover { color: var(--secondary-color); }
+nav a.active { color: var(--secondary-color); }
+.btn-login { background: var(--primary-color); color:#fff !important; padding:10px 24px; border-radius:30px; margin-left:8px !important; font-size:13px !important; }
+.btn-login:hover { background: var(--secondary-color) !important; }
+
+.page-banner { background: var(--primary-color); padding:70px 8% 50px; text-align:center; }
+.page-banner .eyebrow { color: var(--secondary-light); font-size:13px; font-weight:700; letter-spacing:4px; text-transform:uppercase; margin-bottom:14px; }
+.page-banner h1 { color:#fff; font-size:34px; margin:0; font-weight:700; }
+
+.jump-nav { position:sticky; top:67px; background:#fff; border-bottom:1px solid var(--border-hair); z-index:900; display:flex; justify-content:center; gap:8px; padding:14px 8%; flex-wrap:wrap; }
+.jump-nav a { text-decoration:none; color: var(--primary-color); font-size:13.5px; font-weight:600; padding:8px 18px; border-radius:30px; border:1px solid var(--border-hair); transition: all .25s; }
+.jump-nav a:hover { border-color: var(--secondary-color); color: var(--secondary-color); }
+
+section.service-block { padding:80px 8%; border-bottom:1px solid var(--border-hair); scroll-margin-top:130px; }
+section.service-block:nth-child(even) { background: var(--bg-light); }
+.svc-head { display:flex; align-items:center; gap:14px; margin-bottom:26px; }
+.svc-head .num { color: var(--secondary-color); font-weight:800; font-size:14px; letter-spacing:2px; }
+.svc-head h2 { margin:0; color: var(--primary-color); font-size:26px; }
+.svc-intro { color: var(--text-light); font-size:15.5px; max-width:720px; margin-bottom:30px; }
+.svc-grid { display:flex; gap:44px; flex-wrap:wrap; align-items:flex-start; }
+.svc-img { flex:1; min-width:280px; }
+.svc-img img { width:100%; border-radius:4px; box-shadow:0 15px 30px rgba(11,22,34,.1); }
+.svc-detail { flex:1.3; min-width:300px; }
+.svc-detail h3 { color: var(--primary-color); font-size:16px; margin:0 0 12px; }
+.svc-detail ul { margin:0 0 22px; padding-left:18px; color: var(--text-light); font-size:14.5px; }
+.svc-detail li { margin-bottom:9px; }
+.svc-note { color: var(--text-light); font-style:italic; font-size:13.5px; }
+.svc-table { width:100%; border-collapse:collapse; margin-bottom:22px; font-size:14px; }
+.svc-table th, .svc-table td { padding:10px 12px; border-bottom:1px solid var(--border-hair); text-align:left; }
+.svc-table th { background:#fff; color: var(--primary-color); font-weight:700; font-size:12.5px; letter-spacing:.5px; }
+
+footer { background: var(--primary-color); color:#94a3b8; }
+.footer-top { padding:60px 8% 40px; display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:40px; }
+.footer-brand .logo-text, .footer-brand .logo-text span { color:#fff; }
+.footer-brand p { font-size:14px; color:#94a3b8; margin-top:16px; max-width:320px; }
+.footer-col h4 { color:#fff; font-size:13px; letter-spacing:1.5px; text-transform:uppercase; margin:0 0 18px; font-weight:700; }
+.footer-col ul { list-style:none; margin:0; padding:0; }
+.footer-col li { margin-bottom:10px; }
+.footer-col a { color:#94a3b8; text-decoration:none; font-size:14px; }
+.footer-col a:hover { color: var(--secondary-color); }
+.footer-bottom { border-top:1px solid rgba(255,255,255,.08); padding:20px 8%; text-align:center; font-size:13px; color:#64748b; }
+
+@media (max-width:900px) {
+  .footer-top { grid-template-columns:1fr; }
+  nav a:not(.btn-login) { display:none; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="index.html">
+    <div class="logo-mark"></div>
+    <div class="logo-text">德安台灣<span>Transnational Taiwan</span></div>
+  </a>
+  <nav>
+    <a href="index.html">首頁</a>
+    <a href="about.html">關於我們</a>
+    <a href="services.html" class="active">服務項目</a>
+    <a href="contact.html">聯絡我們</a>
+    <a href="#" class="btn-login">線上服務</a>
+  </nav>
+</header>
+
+<div class="page-banner">
+  <p class="eyebrow">Trusted Solutions</p>
+  <h1>服務項目</h1>
+</div>
+
+<div class="jump-nav">
+  <a href="#bank-courier">銀行有價證券文件遞送</a>
+  <a href="#gdm">非固定快遞服務（GDM）</a>
+  <a href="#fmtec">FMTec 智能安全箱</a>
+  <a href="#mailroom">收發室管理服務</a>
+</div>
+
+<section class="service-block" id="bank-courier">
+  <div class="svc-head"><span class="num">01</span><h2>銀行有價證券文件遞送服務</h2></div>
+  <p class="svc-intro">金融機構每日往來的票據、有價證券與重要文件，承載的是客戶的信任。德安台灣秉持「袋不離身」的核心政策，提供銀行業界最高規格的安全遞送服務。</p>
+  <div class="svc-grid">
+    <div class="svc-img"><img src="05_文件處理室實景.png" alt="銀行有價證券文件遞送"></div>
+    <div class="svc-detail">
+      <h3>核心保障</h3>
+      <ul>
+        <li>袋不離身政策：外務人員全程隨身攜帶重要文件，絕不放置於機車車廂，避免遺失風險，同時符合個資法規範</li>
+        <li>Envopak國際保密袋／鎖：採用英國原廠保密袋與保密鎖，遞送過程全程高規格封緘，交付點前不得拆封</li>
+        <li>雙重簽收機制：交接明細表＋保密鎖號碼核對，寄件與收件雙方皆須簽章確認</li>
+        <li>內外部稽核：每月電話路線抽查、巡查路線、保密鎖控管；每年舉辦一次緊急應變計畫演練（BCP Plan）</li>
+        <li>內部緊急通報機制：如遇突發狀況，第一時間啟動內部通報與搜尋流程，將風險降到最低</li>
+      </ul>
+      <p class="svc-note">適用對象：銀行分行間票據遞送、金融機構委託之文件分送業務</p>
+    </div>
+  </div>
+</section>
+
+<section class="service-block" id="gdm">
+  <div class="svc-head"><span class="num">02</span><h2>非固定快遞服務（GDM）</h2></div>
+  <p class="svc-intro">因應客戶臨時性、非固定路線的取送件需求，德安台灣提供彈性的非固定快遞服務。相較於一般坊間快遞著重時效競賽，德安更專注於有價證券、貴重物件與重要文件運送過程中的安全防護與控管機制。</p>
+  <div class="svc-grid">
+    <div class="svc-detail">
+      <h3>送達時間參考</h3>
+      <table class="svc-table">
+        <tr><th>地區</th><th>一般件</th></tr>
+        <tr><td>台北市、新北市</td><td>4小時內</td></tr>
+        <tr><td>跨區外縣市</td><td>隔日中午前</td></tr>
+        <tr><td>特殊區域</td><td>5小時內</td></tr>
+      </table>
+      <h3>叫件方式</h3>
+      <ul>
+        <li>非固定式：客戶每小時以Email方式提出需求，再以電話確認</li>
+        <li>固定式：事先約定定時、定點，簽訂服務協議書，每月提供報表</li>
+      </ul>
+    </div>
+    <div class="svc-detail">
+      <h3>安全配送工具與防護機制</h3>
+      <ul>
+        <li>破壞袋：一次性使用、輕度防濕，收件同時即完成包裝，印製流水編號提供追蹤查詢</li>
+        <li>保密袋／保密鎖扣：確保運送過程袋不離身、原封不動送達</li>
+        <li>GPS安全箱定位機制：全程定位追蹤，掌握運送軌跡與狀態</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="service-block" id="fmtec">
+  <div class="svc-head"><span class="num">03</span><h2>FMTec 智能安全箱</h2></div>
+  <p class="svc-intro">針對高價值、高機密的運送需求，德安台灣獨家代理FMTec智能安全防護裝載箱，採德國軍事規格設計，經電擊、破壞等多項測試，提供業界最高等級的實體安全防護。</p>
+  <div class="svc-grid">
+    <div class="svc-img"><img src="07_FMTec智能安全箱實體照.png" alt="FMTec智能安全箱"></div>
+    <div class="svc-detail">
+      <h3>核心特點</h3>
+      <ul>
+        <li>雙重管控：密碼監控＋RFID感應卡雙重驗證，開箱需同時具備卡片與專屬密碼</li>
+        <li>PEND專利技術：具發報警示與開關箱時間提醒功能，異常開啟即時示警</li>
+        <li>完整稽核紀錄：可存取500筆開關箱紀錄，系統導出資料不可竄改</li>
+        <li>RFID雙內碼管控卡：市面上無法複製，杜絕偽卡風險</li>
+        <li>封閉式管理軟體：無開放介面，降低資訊外洩疑慮</li>
+      </ul>
+      <h3>適用場景</h3>
+      <ul>
+        <li>票據與重要文件運輸安全管理（區域監控、階層管理、責任區分）</li>
+        <li>磁帶／磁盤業務運送（協助金融機構高機密性遞送，搭配緊急應變計畫）</li>
+        <li>高價值產品、金銀珠寶飾品運輸防護</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="service-block" id="mailroom">
+  <div class="svc-head"><span class="num">04</span><h2>收發室管理服務</h2></div>
+  <p class="svc-intro">德安台灣為企業客戶提供專業的收發室管理服務，涵蓋進出件管理、內部傳遞、郵資核算與收發室顧問規劃，協助客戶降低內部行政負擔、提升管理效率。</p>
+  <div class="svc-grid">
+    <div class="svc-img"><img src="09_收發室作業實景_分揀.png" alt="收發室管理服務"></div>
+    <div class="svc-detail">
+      <h3>進出件管理</h3>
+      <ul>
+        <li>條碼掃描，郵件全程追蹤（MMS系統）</li>
+        <li>依樓層、部門進行郵件分揀</li>
+        <li>郵件分析系統，提供管理報表</li>
+      </ul>
+      <h3>內部傳遞</h3>
+      <ul>
+        <li>依樓層、部門固定時間分發</li>
+        <li>系統簽收條紀錄，權責清楚</li>
+        <li>內部信箱收集出件</li>
+      </ul>
+      <h3>收發室顧問</h3>
+      <ul>
+        <li>替客戶端設計、規劃專屬收發室空間</li>
+        <li>軟硬體安裝（鴿式架、分揀站等）</li>
+        <li>提供On-Site（客戶提供場地、德安派駐人員）與Off-Site（德安作業中心集中處理）兩種服務模式</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="logo-text">德安台灣<span>Transnational Taiwan</span></div>
+      <p>新加坡商德安中華有限公司台灣分公司，深耕金融安全物流領域超過四十年，是台灣金融業最值得信賴的合作夥伴。</p>
+    </div>
+    <div class="footer-col">
+      <h4>核心服務</h4>
+      <ul>
+        <li><a href="#bank-courier">銀行有價證券文件遞送</a></li>
+        <li><a href="#gdm">非固定快遞服務（GDM）</a></li>
+        <li><a href="#fmtec">FMTec 智能安全箱</a></li>
+        <li><a href="#mailroom">收發室管理服務</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>快速連結</h4>
+      <ul>
+        <li><a href="index.html">首頁</a></li>
+        <li><a href="about.html">關於我們</a></li>
+        <li><a href="services.html">服務項目</a></li>
+        <li><a href="contact.html">聯絡我們</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 新加坡商德安中華有限公司 台灣分公司 All Rights Reserved．transnational.com.tw</div>
+</footer>
+
+</body>
+</html>

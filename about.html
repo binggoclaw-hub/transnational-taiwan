@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>關於我們 | 德安台灣</title>
+<style>
+:root {
+  --primary-color: #0b1622;
+  --secondary-color: #c9971c;
+  --secondary-light: #e6b94a;
+  --bg-light: #f7f8fa;
+  --text-main: #33424f;
+  --text-light: #64748b;
+  --border-hair: #e5e9ee;
+}
+* { box-sizing: border-box; }
+body { font-family: 'Helvetica Neue', Helvetica, Arial, '微軟正黑體', sans-serif; margin:0; padding:0; color: var(--text-main); line-height:1.8; background:#fff; }
+header { background: rgba(255,255,255,0.97); padding:18px 8%; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-hair); position:sticky; top:0; z-index:1000; backdrop-filter: blur(6px); }
+.logo { display:flex; align-items:center; gap:10px; text-decoration:none; }
+.logo-mark { width:30px; height:30px; border-radius:6px; background: linear-gradient(135deg, var(--secondary-color), var(--secondary-light)); }
+.logo-text { font-size:20px; font-weight:800; color: var(--primary-color); letter-spacing:0.5px; }
+.logo-text span { display:block; font-size:10px; font-weight:500; letter-spacing:2px; color: var(--text-light); text-transform:uppercase; }
+nav { display:flex; align-items:center; }
+nav a { margin:0 16px; text-decoration:none; color: var(--text-main); font-weight:600; font-size:14px; letter-spacing:0.5px; transition:color .25s; }
+nav a:hover { color: var(--secondary-color); }
+nav a.active { color: var(--secondary-color); }
+.btn-login { background: var(--primary-color); color:#fff !important; padding:10px 24px; border-radius:30px; margin-left:8px !important; font-size:13px !important; }
+.btn-login:hover { background: var(--secondary-color) !important; }
+
+.page-banner { background: var(--primary-color); padding:70px 8% 50px; text-align:center; }
+.page-banner .eyebrow { color: var(--secondary-light); font-size:13px; font-weight:700; letter-spacing:4px; text-transform:uppercase; margin-bottom:14px; }
+.page-banner h1 { color:#fff; font-size:34px; margin:0; font-weight:700; }
+
+section { padding:70px 8%; }
+.section-head { text-align:center; max-width:640px; margin:0 auto 45px; }
+.section-title { font-size:28px; font-weight:700; margin:0; color: var(--primary-color); }
+.eyebrow.on-light { color: var(--secondary-color); font-size:13px; font-weight:700; letter-spacing:4px; text-transform:uppercase; margin-bottom:14px; display:block; text-align:center; }
+.bg-gray { background-color: var(--bg-light); }
+
+.timeline-full { display:flex; flex-direction:column; gap:0; max-width:820px; margin:0 auto; }
+.timeline-full .row { display:grid; grid-template-columns:140px 1fr; gap:24px; padding:26px 0; border-bottom:1px solid var(--border-hair); }
+.timeline-full .row:last-child { border-bottom:none; }
+.timeline-full .yr { color: var(--secondary-color); font-weight:700; font-size:17px; }
+.timeline-full p { margin:0; color: var(--text-light); font-size:15px; }
+
+.hallmarks-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:24px; }
+.hallmark-card { background:#fff; border:1px solid var(--border-hair); border-top:3px solid var(--secondary-color); border-radius:4px; padding:26px; }
+.hallmark-card h3 { color: var(--primary-color); margin:0 0 14px; font-size:17px; }
+.hallmark-card ul { margin:0; padding-left:18px; color: var(--text-light); font-size:14px; }
+.hallmark-card li { margin-bottom:8px; }
+
+.locations-wrap { display:flex; gap:50px; flex-wrap:wrap; align-items:flex-start; }
+.locations-list { flex:1; min-width:260px; }
+.locations-list ul { list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(2,1fr); gap:12px; }
+.locations-list li { background: var(--bg-light); padding:12px 16px; border-radius:4px; font-size:14.5px; color: var(--primary-color); font-weight:600; }
+.fleet-notes { flex:1; min-width:260px; color: var(--text-light); font-size:15px; }
+.fleet-notes p { margin-bottom:16px; }
+
+.cert-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:20px; }
+.cert-card { border:1px solid var(--border-hair); border-radius:4px; padding:24px; text-align:center; }
+.cert-card .ic { font-size:26px; margin-bottom:10px; }
+.cert-card h4 { margin:0 0 8px; color: var(--primary-color); font-size:15px; }
+.cert-card p { margin:0; color: var(--text-light); font-size:13.5px; }
+
+footer { background: var(--primary-color); color:#94a3b8; }
+.footer-top { padding:60px 8% 40px; display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:40px; }
+.footer-brand .logo-text, .footer-brand .logo-text span { color:#fff; }
+.footer-brand p { font-size:14px; color:#94a3b8; margin-top:16px; max-width:320px; }
+.footer-col h4 { color:#fff; font-size:13px; letter-spacing:1.5px; text-transform:uppercase; margin:0 0 18px; font-weight:700; }
+.footer-col ul { list-style:none; margin:0; padding:0; }
+.footer-col li { margin-bottom:10px; }
+.footer-col a { color:#94a3b8; text-decoration:none; font-size:14px; }
+.footer-col a:hover { color: var(--secondary-color); }
+.footer-bottom { border-top:1px solid rgba(255,255,255,.08); padding:20px 8%; text-align:center; font-size:13px; color:#64748b; }
+
+@media (max-width:900px) {
+  .footer-top { grid-template-columns:1fr; }
+  .timeline-full .row { grid-template-columns:1fr; gap:6px; }
+  .locations-list ul { grid-template-columns:1fr; }
+  nav a:not(.btn-login) { display:none; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="index.html">
+    <div class="logo-mark"></div>
+    <div class="logo-text">德安台灣<span>Transnational Taiwan</span></div>
+  </a>
+  <nav>
+    <a href="index.html">首頁</a>
+    <a href="about.html" class="active">關於我們</a>
+    <a href="services.html">服務項目</a>
+    <a href="contact.html">聯絡我們</a>
+    <a href="#" class="btn-login">線上服務</a>
+  </nav>
+</header>
+
+<div class="page-banner">
+  <p class="eyebrow">About Transnational Taiwan</p>
+  <h1>關於德安台灣</h1>
+</div>
+
+<section id="history">
+  <p class="eyebrow on-light">Our History</p>
+  <div class="section-head"><h2 class="section-title">公司沿革</h2></div>
+  <div class="timeline-full">
+    <div class="row"><div class="yr">1982–1999</div><p>德安集團與銀行合作，提供票據文件分配管理系統。在新加坡總部的指導下，德安集團也在台灣推廣收發室管理系統及其他服務。</p></div>
+    <div class="row"><div class="yr">1999–2004</div><p>德安台灣取得經濟部許可證，成為全台第一家於營利事業登記證中載明經營之業務包含「接受金融機構委代分送票據」之公司，並於各地區設立營運據點。</p></div>
+    <div class="row"><div class="yr">2004–2012</div><p>在台灣使用德安服務之銀行分行全省超過650家，台灣地區大型行庫與外資銀行，半數以上使用德安票據與文件服務。</p></div>
+    <div class="row"><div class="yr">2012–2022</div><p>服務銀行分行家數突破1,000家，外資銀行滲透率達九成。首次承攬外商收發室、MICR作業中心駐點服務，並拓展有價證券安全配送、壽險業務開發。銀行保密快遞市佔率突破50%。</p></div>
+    <div class="row"><div class="yr">2023–未來</div><p>目標服務銀行分行家數達1,500家，推動銀行供應鏈服務與產品垂直整合，邁向多元配送服務發展，致力於發展金融安全配送服務。</p></div>
+  </div>
+</section>
+
+<section class="bg-gray" id="hallmarks">
+  <p class="eyebrow on-light">Hallmarks of Success</p>
+  <div class="section-head"><h2 class="section-title">經營理念</h2></div>
+  <div class="hallmarks-grid">
+    <div class="hallmark-card">
+      <h3>🔒 安全性 Security</h3>
+      <ul>
+        <li>國際最高規格保密袋和保密鎖（Envopak）</li>
+        <li>保密條款與協定（Confidentiality）</li>
+        <li>人員異動通知（Personnel Control）</li>
+      </ul>
+    </div>
+    <div class="hallmark-card">
+      <h3>⚠️ 風險性 Contingency</h3>
+      <ul>
+        <li>緊急應變演練（Emergency Plan）</li>
+        <li>BCP計畫（Business Continuity Plan）</li>
+        <li>異地備援（Offsite Backup）</li>
+      </ul>
+    </div>
+    <div class="hallmark-card">
+      <h3>🎛️ 控制性 Control</h3>
+      <ul>
+        <li>客戶意見調查（Customer Feedback）</li>
+        <li>服務熱線機制（Hot Line）</li>
+        <li>自有研發追蹤遞送系統（SSK、MMS＆Logi-Q）</li>
+      </ul>
+    </div>
+    <div class="hallmark-card">
+      <h3>✅ 責任性 Accountability</h3>
+      <ul>
+        <li>稽核審查（Audit）</li>
+        <li>執行檢控程序（SOP）</li>
+        <li>客戶服務保證（SLA）</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="locations">
+  <p class="eyebrow on-light">Our Network</p>
+  <div class="section-head"><h2 class="section-title">服務據點與車隊說明</h2></div>
+  <div class="locations-wrap">
+    <div class="locations-list">
+      <ul>
+        <li>台北總公司</li>
+        <li>桃園分公司</li>
+        <li>新竹分公司</li>
+        <li>台中分公司</li>
+        <li>台南分公司</li>
+        <li>高雄分公司</li>
+      </ul>
+    </div>
+    <div class="fleet-notes">
+      <p>德安台灣以台北為總部，串聯全台超過 <strong>250條配送路線</strong>。</p>
+      <p><strong>全省車隊不複委外</strong>，確保運送品質與安全性全程自主掌控，每日台北、高雄兩地發車，跨區件當日收、次日中午前送達。</p>
+      <p>台北發車路線：台北營運據點 → 桃園營運據點 → 新竹營運據點 → 台中營運據點</p>
+      <p>高雄發車路線：高雄營運據點 → 台南營運據點 → 台中營運據點</p>
+    </div>
+  </div>
+</section>
+
+<section class="bg-gray" id="certifications">
+  <p class="eyebrow on-light">Certifications</p>
+  <div class="section-head"><h2 class="section-title">品質認證</h2></div>
+  <div class="cert-grid">
+    <div class="cert-card">
+      <div class="ic">📜</div>
+      <h4>經濟部許可證</h4>
+      <p>全台第一家於營利事業登記證中載明經營之業務包含「接受金融機構委代分送票據」之公司</p>
+    </div>
+    <div class="cert-card">
+      <div class="ic">🧯</div>
+      <h4>防火隔間證明證書</h4>
+      <p>內政部防火耐燃等級之保險庫（2小時防火時效認可）</p>
+    </div>
+    <div class="cert-card">
+      <div class="ic">🏅</div>
+      <h4>ISO 9001 國際品質認證</h4>
+      <p>集團於2008年通過認證，涵蓋郵件管理服務（Mail Management Services）範疇</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="logo-text">德安台灣<span>Transnational Taiwan</span></div>
+      <p>新加坡商德安中華有限公司台灣分公司，深耕金融安全物流領域超過四十年，是台灣金融業最值得信賴的合作夥伴。</p>
+    </div>
+    <div class="footer-col">
+      <h4>核心服務</h4>
+      <ul>
+        <li><a href="services.html#bank-courier">銀行有價證券文件遞送</a></li>
+        <li><a href="services.html#gdm">非固定快遞服務（GDM）</a></li>
+        <li><a href="services.html#fmtec">FMTec 智能安全箱</a></li>
+        <li><a href="services.html#mailroom">收發室管理服務</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>快速連結</h4>
+      <ul>
+        <li><a href="index.html">首頁</a></li>
+        <li><a href="about.html">關於我們</a></li>
+        <li><a href="services.html">服務項目</a></li>
+        <li><a href="contact.html">聯絡我們</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 新加坡商德安中華有限公司 台灣分公司 All Rights Reserved．transnational.com.tw</div>
+</footer>
+
+</body>
+</html>

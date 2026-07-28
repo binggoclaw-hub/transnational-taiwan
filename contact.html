@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>聯絡我們 | 德安台灣</title>
+<style>
+:root {
+  --primary-color: #0b1622;
+  --secondary-color: #c9971c;
+  --secondary-light: #e6b94a;
+  --bg-light: #f7f8fa;
+  --text-main: #33424f;
+  --text-light: #64748b;
+  --border-hair: #e5e9ee;
+}
+* { box-sizing: border-box; }
+body { font-family: 'Helvetica Neue', Helvetica, Arial, '微軟正黑體', sans-serif; margin:0; padding:0; color: var(--text-main); line-height:1.8; background:#fff; }
+header { background: rgba(255,255,255,0.97); padding:18px 8%; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--border-hair); position:sticky; top:0; z-index:1000; backdrop-filter: blur(6px); }
+.logo { display:flex; align-items:center; gap:10px; text-decoration:none; }
+.logo-mark { width:30px; height:30px; border-radius:6px; background: linear-gradient(135deg, var(--secondary-color), var(--secondary-light)); }
+.logo-text { font-size:20px; font-weight:800; color: var(--primary-color); letter-spacing:0.5px; }
+.logo-text span { display:block; font-size:10px; font-weight:500; letter-spacing:2px; color: var(--text-light); text-transform:uppercase; }
+nav { display:flex; align-items:center; }
+nav a { margin:0 16px; text-decoration:none; color: var(--text-main); font-weight:600; font-size:14px; letter-spacing:0.5px; transition:color .25s; }
+nav a:hover { color: var(--secondary-color); }
+nav a.active { color: var(--secondary-color); }
+.btn-login { background: var(--primary-color); color:#fff !important; padding:10px 24px; border-radius:30px; margin-left:8px !important; font-size:13px !important; }
+.btn-login:hover { background: var(--secondary-color) !important; }
+
+.page-banner { background: var(--primary-color); padding:70px 8% 50px; text-align:center; }
+.page-banner .eyebrow { color: var(--secondary-light); font-size:13px; font-weight:700; letter-spacing:4px; text-transform:uppercase; margin-bottom:14px; }
+.page-banner h1 { color:#fff; font-size:34px; margin:0; font-weight:700; }
+
+section { padding:80px 8%; }
+.contact-wrapper { display:flex; gap:50px; flex-wrap:wrap; }
+.contact-info-block { flex:1; min-width:300px; }
+.contact-form-block { flex:1; min-width:300px; background:#fff; padding:35px; border-radius:4px; box-shadow:0 20px 40px rgba(11,22,34,.08); border-top:3px solid var(--secondary-color); }
+.contact-info-block h3 { color: var(--primary-color); font-size:21px; margin-top:0; margin-bottom:18px; }
+.contact-info-block p { color: var(--text-light); font-size:15px; margin:8px 0; }
+.contact-info-block strong { color: var(--primary-color); }
+
+.branch-table { width:100%; border-collapse:collapse; margin-top:22px; font-size:14.5px; }
+.branch-table th, .branch-table td { padding:12px; text-align:left; border-bottom:1px solid var(--border-hair); }
+.branch-table th { background-color: var(--bg-light); color: var(--primary-color); font-weight:700; font-size:13px; letter-spacing:.5px; }
+.branch-table tr:hover { background-color:#fbf6ea; }
+
+.form-group { margin-bottom:18px; }
+.form-control { width:100%; padding:12px 15px; border:1px solid #cbd5e1; border-radius:4px; font-size:15px; box-sizing:border-box; font-family:inherit; transition:border-color .3s; }
+.form-control:focus { outline:none; border-color: var(--secondary-color); }
+textarea.form-control { resize:vertical; min-height:120px; }
+.btn-submit { background: var(--primary-color); color:#fff; border:none; padding:14px 25px; font-size:15px; font-weight:700; letter-spacing:.5px; border-radius:4px; cursor:pointer; width:100%; transition:background .3s; }
+.btn-submit:hover { background: var(--secondary-color); }
+.map-container { margin-top:28px; border-radius:4px; overflow:hidden; }
+
+footer { background: var(--primary-color); color:#94a3b8; }
+.footer-top { padding:60px 8% 40px; display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:40px; }
+.footer-brand .logo-text, .footer-brand .logo-text span { color:#fff; }
+.footer-brand p { font-size:14px; color:#94a3b8; margin-top:16px; max-width:320px; }
+.footer-col h4 { color:#fff; font-size:13px; letter-spacing:1.5px; text-transform:uppercase; margin:0 0 18px; font-weight:700; }
+.footer-col ul { list-style:none; margin:0; padding:0; }
+.footer-col li { margin-bottom:10px; }
+.footer-col a { color:#94a3b8; text-decoration:none; font-size:14px; }
+.footer-col a:hover { color: var(--secondary-color); }
+.footer-bottom { border-top:1px solid rgba(255,255,255,.08); padding:20px 8%; text-align:center; font-size:13px; color:#64748b; }
+
+@media (max-width:900px) {
+  .contact-wrapper { flex-direction:column; }
+  .footer-top { grid-template-columns:1fr; }
+  nav a:not(.btn-login) { display:none; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="index.html">
+    <div class="logo-mark"></div>
+    <div class="logo-text">德安台灣<span>Transnational Taiwan</span></div>
+  </a>
+  <nav>
+    <a href="index.html">首頁</a>
+    <a href="about.html">關於我們</a>
+    <a href="services.html">服務項目</a>
+    <a href="contact.html" class="active">聯絡我們</a>
+    <a href="#" class="btn-login">線上服務</a>
+  </nav>
+</header>
+
+<div class="page-banner">
+  <p class="eyebrow">Get In Touch</p>
+  <h1>聯絡我們</h1>
+</div>
+
+<section>
+  <div class="contact-wrapper">
+    <div class="contact-info-block">
+      <h3>德安台灣 營運總部</h3>
+      <p><strong>地址：</strong>台北市中正區青島東路7號3樓</p>
+      <p><strong>總公司專線：</strong>(02) 2351-0808</p>
+      <p><strong>客服信箱：</strong>bing.chuang@transnational-grp.com</p>
+
+      <h3 style="margin-top:40px; font-size:18px;">全台營運據點聯絡表</h3>
+      <table class="branch-table">
+        <thead><tr><th>據點</th><th>聯絡電話</th><th>聯絡窗口</th></tr></thead>
+        <tbody>
+          <tr><td>台北總公司</td><td>(02) 2351-0808</td><td>莊主任</td></tr>
+          <tr><td>台北作業中心</td><td>(02) 2391-4635</td><td>余主任</td></tr>
+          <tr><td>桃園分公司</td><td>(03) 339-8171</td><td>莊督導／喻主任</td></tr>
+          <tr><td>新竹分公司</td><td>(03) 528-0601</td><td>林組長／喻主任</td></tr>
+          <tr><td>台中分公司</td><td>(04) 2225-6411</td><td>洪主任</td></tr>
+          <tr><td>台南分公司</td><td>(06) 238-5777</td><td>黃督導</td></tr>
+          <tr><td>高雄分公司</td><td>(07) 229-3868</td><td>生主任</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="contact-form-block">
+      <h3 style="margin-top:0; color: var(--primary-color);">線上業務諮詢</h3>
+      <form action="#" method="POST">
+        <div class="form-group"><input type="text" class="form-control" placeholder="您的姓名 / 公司名稱" required></div>
+        <div class="form-group"><input type="email" class="form-control" placeholder="聯絡 Email" required></div>
+        <div class="form-group"><input type="text" class="form-control" placeholder="諮詢主旨（如：收發室管理服務詢問）" required></div>
+        <div class="form-group"><textarea class="form-control" placeholder="請簡述您的需求或留言訊息..." required></textarea></div>
+        <button type="submit" class="btn-submit">送出留言</button>
+      </form>
+      <div class="map-container">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3614.733575916499!2d121.5201449!3d25.0430635!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442a97157833f41%3A0xb35a3962d3a33994!2zMTAw5Y-w5YyX5biC5Lit5q2j5Y2A6Z2S5bO25p2x6LevN-iZnw!5e0!3m2!1szh-TW!2stw!4v1700000000000!5m2!1szh-TW!2stw" width="100%" height="220" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="logo-text">德安台灣<span>Transnational Taiwan</span></div>
+      <p>新加坡商德安中華有限公司台灣分公司，深耕金融安全物流領域超過四十年，是台灣金融業最值得信賴的合作夥伴。</p>
+    </div>
+    <div class="footer-col">
+      <h4>核心服務</h4>
+      <ul>
+        <li><a href="services.html#bank-courier">銀行有價證券文件遞送</a></li>
+        <li><a href="services.html#gdm">非固定快遞服務（GDM）</a></li>
+        <li><a href="services.html#fmtec">FMTec 智能安全箱</a></li>
+        <li><a href="services.html#mailroom">收發室管理服務</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>快速連結</h4>
+      <ul>
+        <li><a href="index.html">首頁</a></li>
+        <li><a href="about.html">關於我們</a></li>
+        <li><a href="services.html">服務項目</a></li>
+        <li><a href="contact.html">聯絡我們</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 新加坡商德安中華有限公司 台灣分公司 All Rights Reserved．transnational.com.tw</div>
+</footer>
+
+</body>
+</html>
