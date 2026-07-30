@@ -29,15 +29,16 @@ nav a.active { color: var(--secondary-color); }
 .btn-login { background: var(--primary-color); color:#fff !important; padding:10px 24px; border-radius:30px; margin-left:8px !important; font-size:13px !important; }
 .btn-login:hover { background: var(--secondary-color) !important; }
 
-.hero-container { position:relative; width:100%; height:78vh; min-height:480px; overflow:hidden; background: var(--primary-color); }
-.hero-bg { position:absolute; inset:-6%; background-image:url('Taiwan.png'); background-size:cover; background-position:center 30%; animation: zoomIn 10s ease-in-out infinite alternate; }
-.hero-overlay { position:absolute; inset:0; background: linear-gradient(to top, rgba(11,22,34,0.88) 5%, rgba(11,22,34,0.25) 55%, rgba(11,22,34,0.45)); display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:0 20px; }
+.hero-container { position:relative; width:100%; height:72vh; min-height:460px; overflow:hidden; background: var(--primary-color); }
+.hero-bg { position:absolute; inset:-6%; background-image:url('Taiwan_101_skyline.jpg'); background-size:cover; background-position:center 45%; animation: zoomIn 10s ease-in-out infinite alternate; }
+.hero-overlay { position:absolute; inset:0; background: linear-gradient(to top, rgba(11,22,34,0.85) 5%, rgba(11,22,34,0.2) 55%, rgba(11,22,34,0.4)); display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:0 20px; }
 .eyebrow { color: var(--secondary-light); font-size:13px; font-weight:700; letter-spacing:4px; text-transform:uppercase; margin-bottom:16px; }
 .eyebrow.on-light { color: var(--secondary-color); }
 .hero-overlay h1 { color:#fff; font-size:44px; margin:0 0 15px; font-weight:700; letter-spacing:2px; text-shadow:0 2px 6px rgba(0,0,0,.5); }
 .hero-overlay p { color:#e2e8f0; font-size:20px; margin:0 0 28px; font-weight:300; }
 .hero-overlay .sub-text { font-size:14px; color:#fff; background:rgba(255,255,255,.08); padding:10px 24px; border-radius:30px; border:1px solid rgba(255,255,255,.25); }
 @keyframes zoomIn { 0%{transform:scale(1);} 100%{transform:scale(1.12);} }
+@media (max-width:900px) { .hero-overlay h1 { font-size:30px; } }
 
 section { padding:90px 8%; }
 .section-head { text-align:center; max-width:640px; margin:0 auto 55px; }
