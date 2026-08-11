@@ -19,6 +19,8 @@
         
         header { background-color: var(--primary-color); color: var(--white); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; }
         .logo { font-size: 18px; font-weight: bold; }
+        .logo .trans { color: var(--white); }
+        .logo .national { color: var(--secondary-color); margin-left: 5px; }
         .btn-logout { cursor: pointer; opacity: 0.8; font-size: 14px; }
 
         .admin-container { display: flex; min-height: calc(100vh - 54px); }
@@ -50,7 +52,7 @@
 <body>
 
     <header>
-        <div class="logo">TRANSNATIONAL 管理後台</div>
+        <div class="logo"><img src="https://binggoclaw-hub.github.io/transnational-taiwan/螢幕擷取畫面_2024-03-04_090807.png" alt="Transnational Group" style="height:34px; vertical-align:middle;"> 管理後台</div>
         <div class="btn-logout" onclick="logout()">登出管理員</div>
     </header>
 

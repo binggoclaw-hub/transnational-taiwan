@@ -23,8 +23,9 @@
 
         header { background-color: var(--primary-color); color: var(--white); padding: 15px 0; }
         header .container { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 20px; font-weight: bold; color: var(--white); }
-        .logo span { color: var(--secondary-color); }
+        .logo { font-size: 24px; font-weight: bold; letter-spacing: 1px; color: var(--white); display: flex; align-items: center; }
+        .logo .trans { color: var(--white); }
+        .logo .national { color: var(--secondary-color); margin-left: 5px; }
         
         .user-info { display: flex; align-items: center; gap: 20px; }
         .btn-logout { color: var(--white); opacity: 0.8; font-size: 14px; text-decoration: underline; cursor: pointer; }
@@ -66,7 +67,7 @@
 
     <header>
         <div class="container">
-            <div class="logo">TRANS<span>NATIONAL</span> ONLINE</div>
+            <div class="logo"><img src="https://binggoclaw-hub.github.io/transnational-taiwan/螢幕擷取畫面_2024-03-04_090807.png" alt="Transnational Group" style="height:34px; vertical-align:middle;"> ONLINE</div>
             <div class="user-info">
                 <span id="displayUserName">載入中...</span>
                 <span class="btn-logout" onclick="logout()">登出</span>

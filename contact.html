@@ -25,15 +25,17 @@
 
         header { background-color: var(--primary-color); color: var(--white); padding: 15px 0; position: sticky; top: 0; z-index: 1000; }
         header .container { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 24px; font-weight: bold; letter-spacing: 1px; color: var(--white); }
-        .logo span { color: var(--secondary-color); }
+        .logo { font-size: 24px; font-weight: bold; letter-spacing: 1px; color: var(--white); display: flex; align-items: center; }
+        .logo .trans { color: var(--white); }
+        .logo .national { color: var(--secondary-color); margin-left: 5px; }
+
         nav ul { display: flex; align-items: center; }
         nav ul li { margin-left: 30px; }
         nav ul li a:hover { color: var(--secondary-color); }
         .btn-online { background-color: var(--secondary-color); color: var(--white); padding: 8px 20px; border-radius: 4px; font-weight: 500; }
 
         .banner {
-            background: linear-gradient(rgba(11, 22, 34, 0.7), rgba(11, 22, 34, 0.7)), url('https://images.unsplash.com/photo-1523966211575-eb4a01e7dd51?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background: linear-gradient(rgba(11, 22, 34, 0.7), rgba(11, 22, 34, 0.7)), url('https://binggoclaw-hub.github.io/transnational-taiwan/Taiwan.png');
             background-size: cover;
             background-position: center;
             height: 250px;
@@ -79,7 +81,7 @@
 
     <header>
         <div class="container">
-            <a href="index.html" class="logo">TRANS<span>NATIONAL</span></a>
+            <a href="index.html" class="logo"><img src="https://binggoclaw-hub.github.io/transnational-taiwan/螢幕擷取畫面_2024-03-04_090807.png" alt="Transnational Group" style="height:34px;"></a>
             <nav>
                 <ul>
                     <li><a href="index.html">首頁</a></li>
@@ -104,39 +106,52 @@
                 <h3 style="margin-bottom: 30px; color: var(--primary-color);">服務據點</h3>
                 <div class="locations-grid">
                     <div class="location-card">
-                        <h4>台北總部 (Taipei)</h4>
+                        <h4>台北總公司 (Taipei Head Office)</h4>
                         <p><i class="fas fa-map-marker-alt"></i> 100008 台北市中正區青島東路7號3樓</p>
                         <p><i class="fas fa-phone"></i> (02) 2351-0808</p>
+                        <p><i class="fas fa-user"></i> 聯絡人：莊主任</p>
                     </div>
                     <div class="location-card">
-                        <h4>桃園 (Taoyuan)</h4>
+                        <h4>台北作業中心 (Taipei Operation Center)</h4>
+                        <p><i class="fas fa-map-marker-alt"></i> 台北市指定地點</p>
+                        <p><i class="fas fa-phone"></i> (02) 2391-4635</p>
+                        <p><i class="fas fa-user"></i> 聯絡人：余主任</p>
+                    </div>
+                    <div class="location-card">
+                        <h4>桃園分公司 (Taoyuan)</h4>
                         <p><i class="fas fa-map-marker-alt"></i> 330046 桃園市桃園區復興路393號8樓之2</p>
                         <p><i class="fas fa-phone"></i> (03) 339-8171</p>
+                        <p><i class="fas fa-user"></i> 聯絡人：莊督導／喻主任</p>
                     </div>
                     <div class="location-card">
-                        <h4>新竹 (Hsinchu)</h4>
+                        <h4>新竹分公司 (Hsinchu)</h4>
                         <p><i class="fas fa-map-marker-alt"></i> 300003 新竹市北區中華路三段9號13樓之4</p>
                         <p><i class="fas fa-phone"></i> (03) 528-0601</p>
+                        <p><i class="fas fa-user"></i> 聯絡人：林組長／喻主任</p>
                     </div>
                     <div class="location-card">
-                        <h4>台中 (Taichung)</h4>
+                        <h4>台中分公司 (Taichung)</h4>
                         <p><i class="fas fa-map-marker-alt"></i> 403306 台中市西區自由路一段101號14樓之3</p>
                         <p><i class="fas fa-phone"></i> (04) 2225-6411</p>
+                        <p><i class="fas fa-user"></i> 聯絡人：洪主任</p>
                     </div>
                     <div class="location-card">
-                        <h4>台南 (Tainan)</h4>
+                        <h4>台南分公司 (Tainan)</h4>
                         <p><i class="fas fa-map-marker-alt"></i> 701037 台南市東區長榮路一段256號8樓之5</p>
                         <p><i class="fas fa-phone"></i> (06) 238-5777</p>
+                        <p><i class="fas fa-user"></i> 聯絡人：黃督導</p>
                     </div>
                     <div class="location-card">
-                        <h4>高雄 (Kaohsiung)</h4>
+                        <h4>高雄分公司 (Kaohsiung)</h4>
                         <p><i class="fas fa-map-marker-alt"></i> 802581 高雄市苓雅區民權一路90號11樓</p>
                         <p><i class="fas fa-phone"></i> (07) 229-3868</p>
+                        <p><i class="fas fa-user"></i> 聯絡人：生主任</p>
                     </div>
-                </div>
+</div>
+            </div>
                 <div style="background: var(--primary-color); color: var(--white); padding: 30px; border-radius: 8px;">
                     <h4 style="margin-bottom: 15px; color: var(--secondary-color);">一般諮詢</h4>
-                    <p style="margin-bottom: 10px;"><i class="fas fa-envelope"></i> Email: lss.tw@transnational-grp.com</p>
+                    <p style="margin-bottom: 10px;"><i class="fas fa-envelope"></i> Email: bing.chuang@transnational-grp.com</p>
                     <p><i class="fas fa-clock"></i> 服務時間：週一至週五 09:00 - 18:00</p>
                 </div>
             </div>
@@ -174,7 +189,7 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <h4 class="logo">TRANS<span>NATIONAL</span></h4>
+                    <h4 class="logo"><img src="https://binggoclaw-hub.github.io/transnational-taiwan/螢幕擷取畫面_2024-03-04_090807.png" alt="Transnational Group" style="height:34px;"></h4>
                     <p>新加坡商德安中華有限公司台灣分公司，專業金融物流服務領導者，深耕台灣四十載。</p>
                 </div>
                 <div class="footer-col">
@@ -199,7 +214,7 @@
                     <h4>聯絡我們</h4>
                     <p>台北總部：台北市中正區青島東路7號3樓</p>
                     <p>電話：(02) 2351-0808</p>
-                    <p>Email: lss.tw@transnational-grp.com</p>
+                    <p>Email: bing.chuang@transnational-grp.com</p>
                 </div>
             </div>
             <div class="footer-bottom">
