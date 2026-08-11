@@ -26,8 +26,6 @@
         header { background-color: var(--primary-color); color: var(--white); padding: 15px 0; position: sticky; top: 0; z-index: 1000; }
         header .container { display: flex; justify-content: space-between; align-items: center; }
         .logo { font-size: 24px; font-weight: bold; letter-spacing: 1px; color: var(--white); display: flex; align-items: center; }
-        .logo .trans { color: var(--white); }
-        .logo .national { color: var(--secondary-color); margin-left: 5px; }
 
         nav ul { display: flex; align-items: center; }
         nav ul li { margin-left: 30px; }
@@ -47,22 +45,27 @@
 
         .banner h1 { font-size: 36px; }
 
-        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; padding: 80px 0; }
+        .contact-layout { display: flex; gap: 50px; padding: 80px 0; }
+        .map-container { flex: 0 0 320px; position: sticky; top: 100px; height: fit-content; }
+        .locations-container { flex: 1; }
         
-        .locations-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; margin-bottom: 50px; }
-        .location-card { padding: 25px; border: 1px solid var(--border-hair); border-radius: 8px; transition: var(--transition); }
+        .locations-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-bottom: 50px; }
+        .location-card { padding: 25px; border: 1px solid var(--border-hair); border-radius: 8px; transition: var(--transition); background: var(--white); }
         .location-card:hover { border-color: var(--secondary-color); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-        .location-card h4 { color: var(--primary-color); margin-bottom: 15px; border-left: 3px solid var(--secondary-color); padding-left: 10px; }
-        .location-card p { font-size: 14px; margin-bottom: 8px; color: var(--text-light); }
-        .location-card i { color: var(--secondary-color); margin-right: 8px; width: 15px; }
+        .location-card h4 { color: var(--primary-color); margin-bottom: 15px; border-left: 4px solid var(--secondary-color); padding-left: 10px; font-size: 18px; }
+        .location-card p { font-size: 14px; margin-bottom: 8px; color: var(--text-light); display: flex; align-items: flex-start; }
+        .location-card i { color: var(--secondary-color); margin-right: 10px; width: 16px; margin-top: 4px; }
 
-        .contact-form { background: var(--bg-light); padding: 40px; border-radius: 8px; }
-        .contact-form h3 { margin-bottom: 25px; color: var(--primary-color); }
+        .contact-form-section { background: var(--bg-light); padding: 80px 0; }
+        .contact-form { background: var(--white); padding: 40px; border-radius: 8px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); max-width: 800px; margin: 0 auto; }
+        .contact-form h3 { margin-bottom: 25px; color: var(--primary-color); text-align: center; }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
         .form-group { margin-bottom: 20px; }
+        .form-group.full { grid-column: span 2; }
         .form-group label { display: block; margin-bottom: 8px; font-weight: 500; }
         .form-group input, .form-group textarea { width: 100%; padding: 12px; border: 1px solid var(--border-hair); border-radius: 4px; font-family: inherit; }
         .form-group textarea { height: 150px; resize: vertical; }
-        .btn-submit { background-color: var(--primary-color); color: var(--white); border: none; padding: 15px 30px; border-radius: 4px; cursor: pointer; font-weight: bold; width: 100%; transition: var(--transition); }
+        .btn-submit { background-color: var(--primary-color); color: var(--white); border: none; padding: 15px 30px; border-radius: 4px; cursor: pointer; font-weight: bold; width: 100%; transition: var(--transition); font-size: 16px; }
         .btn-submit:hover { background-color: var(--secondary-color); }
 
         footer { background-color: var(--primary-color); color: var(--white); padding: 80px 0 20px; }
@@ -72,7 +75,10 @@
         .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 14px; color: rgba(255,255,255,0.5); }
 
         @media (max-width: 992px) {
-            .contact-grid { grid-template-columns: 1fr; }
+            .contact-layout { flex-direction: column; }
+            .map-container { position: static; width: 100%; display: flex; justify-content: center; order: -1; }
+            .form-grid { grid-template-columns: 1fr; }
+            .form-group.full { grid-column: span 1; }
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -81,7 +87,7 @@
 
     <header>
         <div class="container">
-            <a href="index.html" class="logo"><img src="https://binggoclaw-hub.github.io/transnational-taiwan/螢幕擷取畫面_2024-03-04_090807.png" alt="Transnational Group" style="height:34px;"></a>
+            <a href="index.html" class="logo"><img src="https://binggoclaw-hub.github.io/transnational-taiwan/螢幕擷取畫面_2024-03-04_090807.png" alt="Transnational Group" style="height:34px; background:#fff; padding:4px 8px; border-radius:4px;"></a>
             <nav>
                 <ul>
                     <li><a href="index.html">首頁</a></li>
@@ -101,9 +107,9 @@
     </section>
 
     <div class="container">
-        <div class="contact-grid">
-            <div class="contact-info">
-                <h3 style="margin-bottom: 30px; color: var(--primary-color);">服務據點</h3>
+        <div class="contact-layout">
+            <div class="locations-container">
+                <h3 style="margin-bottom: 30px; color: var(--primary-color);">服務據點資訊</h3>
                 <div class="locations-grid">
                     <div class="location-card">
                         <h4>台北總公司 (Taipei Head Office)</h4>
@@ -113,7 +119,7 @@
                     </div>
                     <div class="location-card">
                         <h4>台北作業中心 (Taipei Operation Center)</h4>
-                        <p><i class="fas fa-map-marker-alt"></i> 台北市指定地點</p>
+                        <p><i class="fas fa-map-marker-alt"></i> 台北市中正區林森南路4-1號1樓</p>
                         <p><i class="fas fa-phone"></i> (02) 2391-4635</p>
                         <p><i class="fas fa-user"></i> 聯絡人：余主任</p>
                     </div>
@@ -147,49 +153,82 @@
                         <p><i class="fas fa-phone"></i> (07) 229-3868</p>
                         <p><i class="fas fa-user"></i> 聯絡人：生主任</p>
                     </div>
-</div>
-            </div>
-                <div style="background: var(--primary-color); color: var(--white); padding: 30px; border-radius: 8px;">
-                    <h4 style="margin-bottom: 15px; color: var(--secondary-color);">一般諮詢</h4>
-                    <p style="margin-bottom: 10px;"><i class="fas fa-envelope"></i> Email: bing.chuang@transnational-grp.com</p>
-                    <p><i class="fas fa-clock"></i> 服務時間：週一至週五 09:00 - 18:00</p>
                 </div>
             </div>
 
+            <div class="map-container">
+                <div class="taiwan-map" style="text-align:center; margin-bottom:40px;">
+                    <h3 style="margin-bottom: 20px; color: var(--primary-color);">全台服務網絡</h3>
+                    <svg viewBox="0 0 300 500" style="max-width:280px; height:auto;">
+                      <!-- 簡化台灣輪廓 -->
+                      <path d="M150,20 C180,40 200,80 210,120 C220,160 225,200 220,240 C215,280 210,320 200,360 C190,400 175,440 160,470 C150,480 140,480 135,470 C120,440 105,400 95,360 C85,320 80,280 78,240 C76,200 80,160 90,120 C100,80 120,40 150,20 Z" fill="#e8e8e8" stroke="#ccc" stroke-width="1"/>
+                      <!-- 台北總公司 -->
+                      <circle cx="160" cy="80" r="8" fill="#c9971c"/>
+                      <text x="175" y="85" font-size="11" font-weight="bold" fill="#333">台北總公司</text>
+                      <!-- 桃園分公司 -->
+                      <circle cx="148" cy="110" r="6" fill="#c9971c"/>
+                      <text x="163" y="115" font-size="10" fill="#333">桃園分公司</text>
+                      <!-- 新竹分公司 -->
+                      <circle cx="140" cy="140" r="6" fill="#c9971c"/>
+                      <text x="155" y="145" font-size="10" fill="#333">新竹分公司</text>
+                      <!-- 台中分公司 -->
+                      <circle cx="130" cy="200" r="6" fill="#c9971c"/>
+                      <text x="145" y="205" font-size="10" fill="#333">台中分公司</text>
+                      <!-- 台南分公司 -->
+                      <circle cx="125" cy="310" r="6" fill="#c9971c"/>
+                      <text x="140" y="315" font-size="10" fill="#333">台南分公司</text>
+                      <!-- 高雄分公司 -->
+                      <circle cx="135" cy="370" r="6" fill="#c9971c"/>
+                      <text x="150" y="375" font-size="10" fill="#333">高雄分公司</text>
+                    </svg>
+                </div>
+                <div style="background: var(--primary-color); color: var(--white); padding: 25px; border-radius: 8px;">
+                    <h4 style="margin-bottom: 15px; color: var(--secondary-color);">一般諮詢</h4>
+                    <p style="margin-bottom: 10px; font-size: 14px;"><i class="fas fa-envelope" style="color: var(--secondary-color); margin-right: 10px;"></i> Email: bing.chuang@transnational-grp.com</p>
+                    <p style="font-size: 14px;"><i class="fas fa-clock" style="color: var(--secondary-color); margin-right: 10px;"></i> 服務時間：週一至週五 09:00 - 18:00</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="contact-form-section">
+        <div class="container">
             <div class="contact-form">
-                <h3>線上留言</h3>
+                <h3>線上留言諮詢</h3>
                 <form id="contactForm">
-                    <div class="form-group">
-                        <label for="name">姓名 Name</label>
-                        <input type="text" id="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">電子郵件 Email</label>
-                        <input type="email" id="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">聯絡電話 Phone</label>
-                        <input type="tel" id="phone">
-                    </div>
-                    <div class="form-group">
-                        <label for="subject">主旨 Subject</label>
-                        <input type="text" id="subject" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">訊息內容 Message</label>
-                        <textarea id="message" required></textarea>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="name">姓名 Name</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">電子郵件 Email</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">聯絡電話 Phone</label>
+                            <input type="tel" id="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">主旨 Subject</label>
+                            <input type="text" id="subject" required>
+                        </div>
+                        <div class="form-group full">
+                            <label for="message">訊息內容 Message</label>
+                            <textarea id="message" required></textarea>
+                        </div>
                     </div>
                     <button type="submit" class="btn-submit">送出訊息 SEND MESSAGE</button>
                 </form>
             </div>
         </div>
-    </div>
+    </section>
 
     <footer>
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <h4 class="logo"><img src="https://binggoclaw-hub.github.io/transnational-taiwan/螢幕擷取畫面_2024-03-04_090807.png" alt="Transnational Group" style="height:34px;"></h4>
+                    <h4 class="logo"><img src="https://binggoclaw-hub.github.io/transnational-taiwan/螢幕擷取畫面_2024-03-04_090807.png" alt="Transnational Group" style="height:34px; background:#fff; padding:4px 8px; border-radius:4px;"></h4>
                     <p>新加坡商德安中華有限公司台灣分公司，專業金融物流服務領導者，深耕台灣四十載。</p>
                 </div>
                 <div class="footer-col">

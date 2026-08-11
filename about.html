@@ -26,8 +26,6 @@
         header { background-color: var(--primary-color); color: var(--white); padding: 15px 0; position: sticky; top: 0; z-index: 1000; }
         header .container { display: flex; justify-content: space-between; align-items: center; }
         .logo { font-size: 24px; font-weight: bold; letter-spacing: 1px; color: var(--white); display: flex; align-items: center; }
-        .logo .trans { color: var(--white); }
-        .logo .national { color: var(--secondary-color); margin-left: 5px; }
 
         nav ul { display: flex; align-items: center; }
         nav ul li { margin-left: 30px; }
@@ -46,22 +44,43 @@
             text-align: center;
         }
 
-        .banner h1 { font-size: 40px; }
+        .banner h1 { font-size: 42px; margin-bottom: 10px; }
 
-        .content-section { padding: 80px 0; }
-        .history-box { background: var(--bg-light); padding: 50px; border-radius: 8px; margin-bottom: 60px; border-left: 5px solid var(--secondary-color); }
-        .history-box h2 { margin-bottom: 25px; color: var(--primary-color); }
-        .history-box p { font-size: 18px; margin-bottom: 20px; }
+        section { padding: 80px 0; }
+        .section-title { text-align: center; margin-bottom: 60px; }
+        .section-title h2 { font-size: 32px; color: var(--primary-color); position: relative; padding-bottom: 15px; }
+        .section-title h2::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 60px; height: 3px; background-color: var(--secondary-color); }
 
-        .vision-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
-        .vision-card { padding: 40px; border: 1px solid var(--border-hair); border-radius: 8px; text-align: center; }
-        .vision-card i { font-size: 40px; color: var(--secondary-color); margin-bottom: 20px; }
-        .vision-card h3 { margin-bottom: 15px; color: var(--primary-color); }
+        .about-brief { display: flex; align-items: center; gap: 50px; margin-bottom: 60px; }
+        .about-text { flex: 1; }
+        .about-text p { margin-bottom: 20px; font-size: 17px; }
+        .about-image { flex: 1; }
+        .about-image img { width: 100%; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
 
-        .stats-section { background-color: var(--primary-color); color: var(--white); padding: 80px 0; text-align: center; }
-        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; }
-        .stat-box h3 { font-size: 42px; color: var(--secondary-color); margin-bottom: 10px; }
-        .stat-box p { opacity: 0.8; font-size: 16px; }
+        /* Timeline */
+        .timeline-section { background-color: var(--bg-light); }
+        .timeline { position: relative; max-width: 800px; margin: 0 auto; }
+        .timeline::after { content: ''; position: absolute; width: 2px; background-color: var(--border-hair); top: 0; bottom: 0; left: 50%; margin-left: -1px; }
+        .timeline-item { padding: 10px 40px; position: relative; background-color: inherit; width: 50%; }
+        .timeline-item::after { content: ''; position: absolute; width: 20px; height: 20px; right: -10px; background-color: var(--white); border: 4px solid var(--secondary-color); top: 15px; border-radius: 50%; z-index: 1; }
+        .left { left: 0; }
+        .right { left: 50%; }
+        .right::after { left: -10px; }
+        .timeline-content { padding: 20px 30px; background-color: var(--white); position: relative; border-radius: 6px; box-shadow: 0 3px 10px rgba(0,0,0,0.05); }
+
+        /* Philosophy */
+        .philosophy-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+        .philosophy-card { background: var(--white); padding: 40px 30px; border-radius: 8px; border-top: 4px solid var(--secondary-color); box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-align: center; }
+        .philosophy-card i { font-size: 40px; color: var(--secondary-color); margin-bottom: 20px; }
+        .philosophy-card h3 { margin-bottom: 15px; color: var(--primary-color); }
+
+        /* Fleet/Locations */
+        .fleet-section { background-color: var(--primary-color); color: var(--white); }
+        .fleet-content { display: flex; gap: 50px; align-items: center; }
+        .fleet-text { flex: 1; }
+        .fleet-stats { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .stat-box { background: rgba(255,255,255,0.1); padding: 30px; border-radius: 8px; text-align: center; }
+        .stat-box h3 { font-size: 36px; color: var(--secondary-color); margin-bottom: 10px; }
 
         footer { background-color: var(--primary-color); color: var(--white); padding: 80px 0 20px; border-top: 1px solid rgba(255,255,255,0.1); }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 50px; }
@@ -70,10 +89,11 @@
         .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 14px; color: rgba(255,255,255,0.5); }
 
         @media (max-width: 768px) {
-            header .container { flex-direction: column; }
-            nav ul { margin-top: 20px; }
-            nav ul li { margin: 0 10px; }
-            .banner h1 { font-size: 28px; }
+            .about-brief, .fleet-content { flex-direction: column; }
+            .timeline::after { left: 31px; }
+            .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; }
+            .timeline-item::after { left: 21px; }
+            .right { left: 0%; }
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -82,7 +102,7 @@
 
     <header>
         <div class="container">
-            <a href="index.html" class="logo"><img src="https://binggoclaw-hub.github.io/transnational-taiwan/螢幕擷取畫面_2024-03-04_090807.png" alt="Transnational Group" style="height:34px;"></a>
+            <a href="index.html" class="logo"><img src="https://binggoclaw-hub.github.io/transnational-taiwan/螢幕擷取畫面_2024-03-04_090807.png" alt="Transnational Group" style="height:34px; background:#fff; padding:4px 8px; border-radius:4px;"></a>
             <nav>
                 <ul>
                     <li><a href="index.html">首頁</a></li>
@@ -97,56 +117,125 @@
 
     <section class="banner">
         <div class="container">
-            <h1>關於德安台灣 <br><small style="font-size: 0.5em;">About Transnational Taiwan</small></h1>
+            <h1>關於我們 <br><small style="font-size: 0.5em;">About Transnational Taiwan</small></h1>
         </div>
     </section>
 
-    <section class="content-section">
+    <section class="about-brief-section">
         <div class="container">
-            <div class="history-box">
-                <h2>公司沿革</h2>
-                <p>新加坡商德安中華台灣分公司，自1982年在台灣設立以來，已深耕金融安全物流領域超過四十年。</p>
-                <p>承襲新加坡德安集團（Transnational Group）自1973年建立的專業信譽，將亞太地區領先的物流與商業流程外包（BPO）經驗，落實在台灣每一條配送路線上。</p>
-            </div>
-
-            <div class="vision-grid">
-                <div class="vision-card">
-                    <i class="fas fa-eye"></i>
-                    <h3>企業願景</h3>
-                    <p>成為亞太地區最值得信賴的物流與業務流程外包合作夥伴，透過創新技術與卓越服務創造價值。</p>
+            <div class="about-brief">
+                <div class="about-text">
+                    <div class="section-title" style="text-align: left;">
+                        <h2 style="padding-left: 0;">公司簡介</h2>
+                        <p style="text-align: left; margin-left: 0;">Company Profile</p>
+                    </div>
+                    <p>自1982年設立以來，德安台灣（Transnational Taiwan）已深耕金融安全物流超過四十年。我們始終秉持著專業、安全、誠信的核心價值，為客戶提供最高品質的物流解決方案。</p>
+                    <p>我們以台北為總部，在桃園、新竹、台中、台南、高雄設有六大據點，服務網絡覆蓋全台。憑藉著全台超過 250 條專業配送路線，我們已成為金融機構與企業最值得信賴的安全物流夥伴。</p>
                 </div>
-                <div class="vision-card">
-                    <i class="fas fa-bullseye"></i>
-                    <h3>經營理念</h3>
-                    <p>誠信、安全、效率。我們堅持最高的職業道德標準，確保客戶資產在每一次傳遞中都獲得完美保護。</p>
-                </div>
-                <div class="vision-card">
-                    <i class="fas fa-rocket"></i>
-                    <h3>企業使命</h3>
-                    <p>為金融機構與企業提供量身打造的物流解決方案，助力客戶專注於其核心業務發展。</p>
+                <div class="about-image">
+                    <img src="https://binggoclaw-hub.github.io/transnational-taiwan/04_%E4%BA%A4%E6%8E%A7%E4%B8%AD%E5%BF%83%E4%BD%9C%E6%A5%AD%E5%AF%A6%E6%99%AF.png" alt="Office View">
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="stats-section">
+    <section class="timeline-section">
         <div class="container">
-            <div class="stats-grid">
-                <div class="stat-box">
-                    <h3>6</h3>
-                    <p>營運國家</p>
+            <div class="section-title">
+                <h2>發展里程碑</h2>
+                <p>Development Milestones</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h4>1982 - 1999</h4>
+                        <p>進入台灣市場，建立金融快遞基礎網絡。</p>
+                    </div>
                 </div>
-                <div class="stat-box">
-                    <h3>21</h3>
-                    <p>業務單位</p>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h4>1999 - 2004</h4>
+                        <p>擴展至全台六大據點，服務路線突破 100 條。</p>
+                    </div>
                 </div>
-                <div class="stat-box">
-                    <h3>2,600+</h3>
-                    <p>區域員工</p>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h4>2004 - 2012</h4>
+                        <p>導入智能安全箱技術，提升高端物流安全性。</p>
+                    </div>
                 </div>
-                <div class="stat-box">
-                    <h3>140,000+</h3>
-                    <p>每日遞送量</p>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <h4>2012 - 2022</h4>
+                        <p>市佔率突破 50%，成為外資銀行首選夥伴。</p>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <h4>2023 - 未來</h4>
+                        <p>數位轉型，推出全面線上化叫件與追蹤系統。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="philosophy-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>經營理念</h2>
+                <p>Core Philosophy</p>
+            </div>
+            <div class="philosophy-grid">
+                <div class="philosophy-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>安全性 Security</h3>
+                    <p>嚴格的人員背景審核與標準化作業流程，確保每一件物品的安全。</p>
+                </div>
+                <div class="philosophy-card">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <h3>風險性 Contingency</h3>
+                    <p>完善的緊急應變計畫與全方位的保險機制，降低運送過程中的各類風險。</p>
+                </div>
+                <div class="philosophy-card">
+                    <i class="fas fa-cogs"></i>
+                    <h3>控制性 Control</h3>
+                    <p>先進的追蹤系統與封閉式管理，實現對物流過程的即時掌控。</p>
+                </div>
+                <div class="philosophy-card">
+                    <i class="fas fa-user-check"></i>
+                    <h3>責任性 Accountability</h3>
+                    <p>清晰的簽收紀錄與責任歸屬，展現對客戶託付的最高責任感。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="fleet-section">
+        <div class="container">
+            <div class="fleet-content">
+                <div class="fleet-text">
+                    <h2 style="font-size: 32px; margin-bottom: 25px; color: var(--secondary-color);">服務據點與專業車隊</h2>
+                    <p style="font-size: 18px; opacity: 0.9; margin-bottom: 20px;">我們在全台灣佈局了完善的服務網路，並擁有專屬的專業配送車隊。所有車輛均配備 GPS 定位與安全監控系統。</p>
+                    <p style="font-size: 18px; opacity: 0.9;">我們的人員經過嚴格培訓，不僅具備物流專業，更深諳金融產業的安全規範。</p>
+                </div>
+                <div class="fleet-stats">
+                    <div class="stat-box">
+                        <h3>6</h3>
+                        <p>全台營運據點</p>
+                    </div>
+                    <div class="stat-box">
+                        <h3>250+</h3>
+                        <p>專業配送路線</p>
+                    </div>
+                    <div class="stat-box">
+                        <h3>1000+</h3>
+                        <p>服務銀行分行</p>
+                    </div>
+                    <div class="stat-box">
+                        <h3>40+</h3>
+                        <p>深耕台灣年數</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -156,7 +245,7 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <h4 class="logo"><img src="https://binggoclaw-hub.github.io/transnational-taiwan/螢幕擷取畫面_2024-03-04_090807.png" alt="Transnational Group" style="height:34px;"></h4>
+                    <h4 class="logo"><img src="https://binggoclaw-hub.github.io/transnational-taiwan/螢幕擷取畫面_2024-03-04_090807.png" alt="Transnational Group" style="height:34px; background:#fff; padding:4px 8px; border-radius:4px;"></h4>
                     <p>新加坡商德安中華有限公司台灣分公司，專業金融物流服務領導者，深耕台灣四十載。</p>
                 </div>
                 <div class="footer-col">
