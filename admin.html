@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理後台 | Transnational Taiwan 德安台灣</title>
+    <style>
+        :root {
+            --primary-color: #0b1622;
+            --secondary-color: #c9971c;
+            --bg-light: #f7f8fa;
+            --text-main: #33424f;
+            --border-hair: #e5e9ee;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Helvetica Neue', Helvetica, Arial, '微軟正黑體', sans-serif; background-color: var(--bg-light); color: var(--text-main); }
+        
+        header { background-color: var(--primary-color); color: var(--white); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 18px; font-weight: bold; }
+        .btn-logout { cursor: pointer; opacity: 0.8; font-size: 14px; }
+
+        .admin-container { display: flex; min-height: calc(100vh - 54px); }
+        
+        .sidebar { width: 250px; background: #1a2a3a; color: var(--white); padding: 30px 0; }
+        .sidebar-item { padding: 15px 30px; cursor: pointer; transition: 0.3s; }
+        .sidebar-item:hover, .sidebar-item.active { background: var(--secondary-color); }
+
+        .main-content { flex: 1; padding: 40px; }
+        .card { background: var(--white); padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .card h2 { margin-bottom: 25px; border-bottom: 2px solid var(--bg-light); padding-bottom: 15px; display: flex; justify-content: space-between; align-items: center; }
+
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        table th, table td { text-align: left; padding: 12px; border-bottom: 1px solid var(--border-hair); }
+        table th { background: #f8f9fa; font-weight: 600; }
+
+        .btn { padding: 8px 15px; border-radius: 4px; cursor: pointer; border: none; font-size: 14px; }
+        .btn-add { background: var(--secondary-color); color: var(--white); }
+        .btn-edit { background: #3498db; color: var(--white); margin-right: 5px; }
+        .btn-delete { background: #e74c3c; color: var(--white); }
+
+        .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: none; align-items: center; justify-content: center; }
+        .modal-content { background: var(--white); padding: 30px; border-radius: 8px; width: 400px; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: 500; }
+        .form-group input, .form-group select { width: 100%; padding: 10px; border: 1px solid var(--border-hair); border-radius: 4px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">TRANSNATIONAL 管理後台</div>
+        <div class="btn-logout" onclick="logout()">登出管理員</div>
+    </header>
+
+    <div class="admin-container">
+        <div class="sidebar">
+            <div class="sidebar-item active" onclick="switchTab('customers')">客戶管理</div>
+            <div class="sidebar-item" onclick="switchTab('depts')">部門/分機管理</div>
+        </div>
+
+        <div class="main-content">
+            <!-- 客戶管理 Tab -->
+            <div id="customersTab" class="card">
+                <h2>客戶列表 <button class="btn btn-add" onclick="showModal('customer')">+ 新增客戶</button></h2>
+                <table id="customerTable">
+                    <thead>
+                        <tr>
+                            <th>客戶代碼</th>
+                            <th>客戶名稱</th>
+                            <th>密碼</th>
+                            <th>狀態</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="customerList"></tbody>
+                </table>
+            </div>
+
+            <!-- 部門管理 Tab -->
+            <div id="deptsTab" class="card" style="display:none;">
+                <h2>部門/分機列表 <button class="btn btn-add" onclick="showModal('dept')">+ 新增部門</button></h2>
+                <div style="margin-bottom: 20px;">
+                    篩選客戶：
+                    <select id="customerFilter" onchange="renderDepts()">
+                        <option value="ALL">全部客戶</option>
+                    </select>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>所屬客戶</th>
+                            <th>部門名稱</th>
+                            <th>分機</th>
+                            <th>成本中心</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="deptList"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <h3 id="modalTitle">新增資料</h3>
+            <div id="modalBody" style="margin-top: 20px;"></div>
+            <div style="margin-top: 20px; text-align: right;">
+                <button class="btn" style="background:#ccc;" onclick="closeModal()">取消</button>
+                <button class="btn btn-add" onclick="saveData()">儲存</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 檢查登入
+        if (sessionStorage.getItem('admin_logged_in') !== 'true') {
+            window.location.href = 'login.html';
+        }
+
+        let currentTab = 'customers';
+        let editingType = '';
+
+        function switchTab(tab) {
+            currentTab = tab;
+            document.querySelectorAll('.sidebar-item').forEach(el => el.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            document.getElementById('customersTab').style.display = tab === 'customers' ? 'block' : 'none';
+            document.getElementById('deptsTab').style.display = tab === 'depts' ? 'block' : 'none';
+            
+            if (tab === 'depts') updateCustomerFilter();
+            renderAll();
+        }
+
+        function renderAll() {
+            renderCustomers();
+            renderDepts();
+        }
+
+        function renderCustomers() {
+            const customers = JSON.parse(localStorage.getItem('transnational_customers') || '[]');
+            const list = document.getElementById('customerList');
+            list.innerHTML = '';
+            customers.forEach((c, index) => {
+                list.innerHTML += `
+                    <tr>
+                        <td>${c.id}</td>
+                        <td>${c.name}</td>
+                        <td>${c.password}</td>
+                        <td>${c.status}</td>
+                        <td>
+                            <button class="btn btn-delete" onclick="deleteItem('customer', ${index})">刪除</button>
+                        </td>
+                    </tr>
+                `;
+            });
+        }
+
+        function updateCustomerFilter() {
+            const customers = JSON.parse(localStorage.getItem('transnational_customers') || '[]');
+            const filter = document.getElementById('customerFilter');
+            filter.innerHTML = '<option value="ALL">全部客戶</option>';
+            customers.forEach(c => {
+                filter.innerHTML += `<option value="${c.id}">${c.name}</option>`;
+            });
+        }
+
+        function renderDepts() {
+            const depts = JSON.parse(localStorage.getItem('transnational_depts') || '[]');
+            const filterVal = document.getElementById('customerFilter').value;
+            const list = document.getElementById('deptList');
+            list.innerHTML = '';
+            
+            depts.filter(d => filterVal === 'ALL' || d.customerId === filterVal).forEach((d, index) => {
+                list.innerHTML += `
+                    <tr>
+                        <td>${d.customerId}</td>
+                        <td>${d.name}</td>
+                        <td>${d.ext}</td>
+                        <td>${d.costCenter}</td>
+                        <td>
+                            <button class="btn btn-delete" onclick="deleteItem('dept', ${index})">刪除</button>
+                        </td>
+                    </tr>
+                `;
+            });
+        }
+
+        function showModal(type) {
+            editingType = type;
+            document.getElementById('modalTitle').textContent = type === 'customer' ? '新增客戶' : '新增部門';
+            const body = document.getElementById('modalBody');
+            
+            if (type === 'customer') {
+                body.innerHTML = `
+                    <div class="form-group"><label>客戶代碼</label><input id="c_id"></div>
+                    <div class="form-group"><label>客戶名稱</label><input id="c_name"></div>
+                    <div class="form-group"><label>密碼</label><input id="c_pass"></div>
+                `;
+            } else {
+                const customers = JSON.parse(localStorage.getItem('transnational_customers') || '[]');
+                let options = customers.map(c => `<option value="${c.id}">${c.name}</option>`).join('');
+                body.innerHTML = `
+                    <div class="form-group"><label>所屬客戶</label><select id="d_cid">${options}</select></div>
+                    <div class="form-group"><label>部門名稱</label><input id="d_name"></div>
+                    <div class="form-group"><label>分機</label><input id="d_ext"></div>
+                    <div class="form-group"><label>成本中心</label><input id="d_cost"></div>
+                `;
+            }
+            document.getElementById('modal').style.display = 'flex';
+        }
+
+        function closeModal() { document.getElementById('modal').style.display = 'none'; }
+
+        function saveData() {
+            if (editingType === 'customer') {
+                const customers = JSON.parse(localStorage.getItem('transnational_customers') || '[]');
+                customers.push({
+                    id: document.getElementById('c_id').value,
+                    name: document.getElementById('c_name').value,
+                    password: document.getElementById('c_pass').value,
+                    status: '有效'
+                });
+                localStorage.setItem('transnational_customers', JSON.stringify(customers));
+            } else {
+                const depts = JSON.parse(localStorage.getItem('transnational_depts') || '[]');
+                depts.push({
+                    customerId: document.getElementById('d_cid').value,
+                    name: document.getElementById('d_name').value,
+                    ext: document.getElementById('d_ext').value,
+                    costCenter: document.getElementById('d_cost').value
+                });
+                localStorage.setItem('transnational_depts', JSON.stringify(depts));
+            }
+            closeModal();
+            renderAll();
+        }
+
+        function deleteItem(type, index) {
+            if (!confirm('確定要刪除嗎？')) return;
+            const key = type === 'customer' ? 'transnational_customers' : 'transnational_depts';
+            const data = JSON.parse(localStorage.getItem(key));
+            data.splice(index, 1);
+            localStorage.setItem(key, JSON.stringify(data));
+            renderAll();
+        }
+
+        function logout() {
+            sessionStorage.clear();
+            window.location.href = 'login.html';
+        }
+
+        window.onload = renderAll;
+    </script>
+</body>
+</html>
