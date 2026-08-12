@@ -46,13 +46,16 @@
         .banner h1 { font-size: 36px; }
 
         .contact-layout { display: flex; gap: 50px; padding: 80px 0; }
-        .map-container { flex: 0 0 320px; position: sticky; top: 100px; height: fit-content; }
         .locations-container { flex: 1; }
+        .map-side { flex: 0 0 450px; position: sticky; top: 100px; height: fit-content; }
+        
+        .section-title-large { font-size: 32px; color: var(--primary-color); margin-bottom: 30px; font-weight: 700; border-left: 6px solid var(--secondary-color); padding-left: 15px; }
         
         .locations-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-bottom: 50px; }
         .location-card { padding: 25px; border: 1px solid var(--border-hair); border-radius: 8px; transition: var(--transition); background: var(--white); }
         .location-card:hover { border-color: var(--secondary-color); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-        .location-card h4 { color: var(--primary-color); margin-bottom: 15px; border-left: 4px solid var(--secondary-color); padding-left: 10px; font-size: 18px; }
+        .location-card h4 { color: var(--primary-color); margin-bottom: 15px; font-size: 18px; line-height: 1.4; }
+        .location-card h4 span { display: block; font-size: 14px; color: var(--text-light); font-weight: normal; margin-top: 2px; }
         .location-card p { font-size: 14px; margin-bottom: 8px; color: var(--text-light); display: flex; align-items: flex-start; }
         .location-card i { color: var(--secondary-color); margin-right: 10px; width: 16px; margin-top: 4px; }
 
@@ -76,7 +79,7 @@
 
         @media (max-width: 992px) {
             .contact-layout { flex-direction: column; }
-            .map-container { position: static; width: 100%; display: flex; justify-content: center; order: -1; }
+            .map-side { flex: 0 0 auto; position: static; width: 100%; }
             .form-grid { grid-template-columns: 1fr; }
             .form-group.full { grid-column: span 1; }
         }
@@ -87,7 +90,7 @@
 
     <header>
         <div class="container">
-            <a href="index.html" class="logo"><img src="https://binggoclaw-hub.github.io/transnational-taiwan/螢幕擷取畫面_2024-03-04_090807.png" alt="Transnational Group" style="height:34px; background:#fff; padding:4px 8px; border-radius:4px;"></a>
+            <a href="index.html" class="logo"><img src="https://binggoclaw-hub.github.io/transnational-taiwan/螢幕擷取畫面_2024-03-04_090807.png" alt="Transnational Group" style="height:40px; filter: brightness(0) invert(1);"></a>
             <nav>
                 <ul>
                     <li><a href="index.html">首頁</a></li>
@@ -109,46 +112,46 @@
     <div class="container">
         <div class="contact-layout">
             <div class="locations-container">
-                <h3 style="margin-bottom: 30px; color: var(--primary-color);">服務據點資訊</h3>
+                <h2 class="section-title-large">服務據點資訊</h2>
                 <div class="locations-grid">
                     <div class="location-card">
-                        <h4>台北總公司 (Taipei Head Office)</h4>
+                        <h4>台北總公司<span>(Taipei Head Office)</span></h4>
                         <p><i class="fas fa-map-marker-alt"></i> 100008 台北市中正區青島東路7號3樓</p>
                         <p><i class="fas fa-phone"></i> (02) 2351-0808</p>
                         <p><i class="fas fa-user"></i> 聯絡人：莊主任</p>
                     </div>
                     <div class="location-card">
-                        <h4>台北作業中心 (Taipei Operation Center)</h4>
+                        <h4>台北作業中心<span>(Taipei Operation Center)</span></h4>
                         <p><i class="fas fa-map-marker-alt"></i> 台北市中正區林森南路4-1號1樓</p>
                         <p><i class="fas fa-phone"></i> (02) 2391-4635</p>
                         <p><i class="fas fa-user"></i> 聯絡人：余主任</p>
                     </div>
                     <div class="location-card">
-                        <h4>桃園分公司 (Taoyuan)</h4>
+                        <h4>桃園分公司<span>(Taoyuan Branch)</span></h4>
                         <p><i class="fas fa-map-marker-alt"></i> 330046 桃園市桃園區復興路393號8樓之2</p>
                         <p><i class="fas fa-phone"></i> (03) 339-8171</p>
                         <p><i class="fas fa-user"></i> 聯絡人：莊督導／喻主任</p>
                     </div>
                     <div class="location-card">
-                        <h4>新竹分公司 (Hsinchu)</h4>
+                        <h4>新竹分公司<span>(Hsinchu Branch)</span></h4>
                         <p><i class="fas fa-map-marker-alt"></i> 300003 新竹市北區中華路三段9號13樓之4</p>
                         <p><i class="fas fa-phone"></i> (03) 528-0601</p>
                         <p><i class="fas fa-user"></i> 聯絡人：林組長／喻主任</p>
                     </div>
                     <div class="location-card">
-                        <h4>台中分公司 (Taichung)</h4>
+                        <h4>台中分公司<span>(Taichung Branch)</span></h4>
                         <p><i class="fas fa-map-marker-alt"></i> 403306 台中市西區自由路一段101號14樓之3</p>
                         <p><i class="fas fa-phone"></i> (04) 2225-6411</p>
                         <p><i class="fas fa-user"></i> 聯絡人：洪主任</p>
                     </div>
                     <div class="location-card">
-                        <h4>台南分公司 (Tainan)</h4>
+                        <h4>台南分公司<span>(Tainan Branch)</span></h4>
                         <p><i class="fas fa-map-marker-alt"></i> 701037 台南市東區長榮路一段256號8樓之5</p>
                         <p><i class="fas fa-phone"></i> (06) 238-5777</p>
                         <p><i class="fas fa-user"></i> 聯絡人：黃督導</p>
                     </div>
                     <div class="location-card">
-                        <h4>高雄分公司 (Kaohsiung)</h4>
+                        <h4>高雄分公司<span>(Kaohsiung Branch)</span></h4>
                         <p><i class="fas fa-map-marker-alt"></i> 802581 高雄市苓雅區民權一路90號11樓</p>
                         <p><i class="fas fa-phone"></i> (07) 229-3868</p>
                         <p><i class="fas fa-user"></i> 聯絡人：生主任</p>
@@ -156,36 +159,15 @@
                 </div>
             </div>
 
-            <div class="map-container">
-                <div class="taiwan-map" style="text-align:center; margin-bottom:40px;">
-                    <h3 style="margin-bottom: 20px; color: var(--primary-color);">全台服務網絡</h3>
-                    <svg viewBox="0 0 300 500" style="max-width:280px; height:auto;">
-                      <!-- 簡化台灣輪廓 -->
-                      <path d="M150,20 C180,40 200,80 210,120 C220,160 225,200 220,240 C215,280 210,320 200,360 C190,400 175,440 160,470 C150,480 140,480 135,470 C120,440 105,400 95,360 C85,320 80,280 78,240 C76,200 80,160 90,120 C100,80 120,40 150,20 Z" fill="#e8e8e8" stroke="#ccc" stroke-width="1"/>
-                      <!-- 台北總公司 -->
-                      <circle cx="160" cy="80" r="8" fill="#c9971c"/>
-                      <text x="175" y="85" font-size="11" font-weight="bold" fill="#333">台北總公司</text>
-                      <!-- 桃園分公司 -->
-                      <circle cx="148" cy="110" r="6" fill="#c9971c"/>
-                      <text x="163" y="115" font-size="10" fill="#333">桃園分公司</text>
-                      <!-- 新竹分公司 -->
-                      <circle cx="140" cy="140" r="6" fill="#c9971c"/>
-                      <text x="155" y="145" font-size="10" fill="#333">新竹分公司</text>
-                      <!-- 台中分公司 -->
-                      <circle cx="130" cy="200" r="6" fill="#c9971c"/>
-                      <text x="145" y="205" font-size="10" fill="#333">台中分公司</text>
-                      <!-- 台南分公司 -->
-                      <circle cx="125" cy="310" r="6" fill="#c9971c"/>
-                      <text x="140" y="315" font-size="10" fill="#333">台南分公司</text>
-                      <!-- 高雄分公司 -->
-                      <circle cx="135" cy="370" r="6" fill="#c9971c"/>
-                      <text x="150" y="375" font-size="10" fill="#333">高雄分公司</text>
-                    </svg>
+            <div class="map-side">
+                <div style="text-align:center;">
+                  <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663752346972/qQgKGsaNBeLACeeP.jpg" alt="全台服務網域" style="width:100%; max-width:500px; border-radius:8px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                  <p style="margin-top:15px; color:var(--secondary-color); font-weight:bold; font-size:18px;">全台六大據點・250+條配送路線・四通八達的安全物流網域</p>
                 </div>
-                <div style="background: var(--primary-color); color: var(--white); padding: 25px; border-radius: 8px;">
-                    <h4 style="margin-bottom: 15px; color: var(--secondary-color);">一般諮詢</h4>
-                    <p style="margin-bottom: 10px; font-size: 14px;"><i class="fas fa-envelope" style="color: var(--secondary-color); margin-right: 10px;"></i> Email: bing.chuang@transnational-grp.com</p>
-                    <p style="font-size: 14px;"><i class="fas fa-clock" style="color: var(--secondary-color); margin-right: 10px;"></i> 服務時間：週一至週五 09:00 - 18:00</p>
+                <div style="background: var(--primary-color); color: var(--white); padding: 30px; border-radius: 8px; margin-top: 40px;">
+                    <h4 style="margin-bottom: 15px; color: var(--secondary-color); font-size: 20px;">一般諮詢</h4>
+                    <p style="margin-bottom: 15px; font-size: 16px;"><i class="fas fa-envelope" style="color: var(--secondary-color); margin-right: 10px;"></i> Email: bing.chuang@transnational-grp.com</p>
+                    <p style="font-size: 16px;"><i class="fas fa-clock" style="color: var(--secondary-color); margin-right: 10px;"></i> 服務時間：週一至週五 09:00 - 18:00</p>
                 </div>
             </div>
         </div>
@@ -228,7 +210,7 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <h4 class="logo"><img src="https://binggoclaw-hub.github.io/transnational-taiwan/螢幕擷取畫面_2024-03-04_090807.png" alt="Transnational Group" style="height:34px; background:#fff; padding:4px 8px; border-radius:4px;"></h4>
+                    <h4 class="logo"><img src="https://binggoclaw-hub.github.io/transnational-taiwan/螢幕擷取畫面_2024-03-04_090807.png" alt="Transnational Group" style="height:40px; filter: brightness(0) invert(1);"></h4>
                     <p>新加坡商德安中華有限公司台灣分公司，專業金融物流服務領導者，深耕台灣四十載。</p>
                 </div>
                 <div class="footer-col">

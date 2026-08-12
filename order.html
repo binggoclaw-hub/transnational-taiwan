@@ -14,40 +14,45 @@
             --text-light: #64748b;
             --border-hair: #e5e9ee;
             --white: #ffffff;
+            --sender-bg: #fff9e6;
+            --recipient-bg: #f0f7ff;
             --transition: all 0.3s ease;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Helvetica Neue', Helvetica, Arial, '微軟正黑體', sans-serif; color: var(--text-main); line-height: 1.6; background-color: var(--bg-light); }
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
         .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
 
         header { background-color: var(--primary-color); color: var(--white); padding: 15px 0; }
         header .container { display: flex; justify-content: space-between; align-items: center; }
         .logo { font-size: 24px; font-weight: bold; letter-spacing: 1px; color: var(--white); display: flex; align-items: center; }
-        .logo .trans { color: var(--white); }
-        .logo .national { color: var(--secondary-color); margin-left: 5px; }
         
         .user-info { display: flex; align-items: center; gap: 20px; }
         .btn-logout { color: var(--white); opacity: 0.8; font-size: 14px; text-decoration: underline; cursor: pointer; }
 
         .order-content { padding: 40px 0; }
-        .order-card { background: var(--white); padding: 40px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-        .order-card h2 { margin-bottom: 30px; color: var(--primary-color); border-bottom: 2px solid var(--bg-light); padding-bottom: 15px; }
+        .order-card { background: var(--white); padding: 40px; border-radius: 8px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
+        .order-card h2 { margin-bottom: 30px; color: var(--primary-color); border-bottom: 2px solid var(--secondary-color); padding-bottom: 15px; }
 
-        .step-section { margin-bottom: 40px; }
-        .step-title { display: flex; align-items: center; margin-bottom: 20px; }
-        .step-num { width: 30px; height: 30px; background: var(--secondary-color); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px; font-weight: bold; }
-        .step-title h3 { font-size: 20px; color: var(--primary-color); }
+        .section-box { padding: 30px; border-radius: 8px; margin-bottom: 30px; border: 2px solid transparent; }
+        .sender-section { background-color: var(--sender-bg); border-color: #ffeeb3; }
+        .recipient-section { background-color: var(--recipient-bg); border-color: #d1e6ff; }
+        
+        .section-title { font-size: 20px; font-weight: 700; margin-bottom: 20px; color: var(--primary-color); display: flex; align-items: center; gap: 10px; }
+        .section-title i { color: var(--secondary-color); }
 
         .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .form-group { margin-bottom: 20px; }
+        .form-group { margin-bottom: 15px; }
         .form-group.full { grid-column: span 2; }
-        .form-group label { display: block; margin-bottom: 8px; font-weight: 500; color: var(--text-main); }
-        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px; border: 1px solid var(--border-hair); border-radius: 4px; font-family: inherit; background: var(--white); }
-        .form-group input[readonly] { background: #f0f2f5; cursor: not-allowed; }
-        
-        .btn-submit { background-color: var(--secondary-color); color: var(--white); border: none; padding: 18px 40px; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 18px; width: 100%; transition: var(--transition); margin-top: 20px; }
-        .btn-submit:hover { background-color: var(--secondary-light); }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 14px; color: var(--primary-color); }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-family: inherit; background: var(--white); }
+        .form-group input[readonly] { background-color: #f0f2f5; cursor: not-allowed; }
+
+        .divider { height: 4px; background: repeating-linear-gradient(45deg, #ccc, #ccc 10px, #eee 10px, #eee 20px); margin: 40px 0; border-radius: 2px; }
+
+        .btn-submit { background-color: var(--primary-color); color: var(--white); border: none; padding: 18px; border-radius: 4px; cursor: pointer; font-weight: bold; width: 100%; transition: var(--transition); font-size: 18px; margin-top: 20px; }
+        .btn-submit:hover { background-color: var(--secondary-color); transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
 
         .success-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: none; align-items: center; justify-content: center; z-index: 2000; }
         .success-box { background: var(--white); padding: 50px; border-radius: 8px; text-align: center; max-width: 500px; }
@@ -59,6 +64,7 @@
         @media (max-width: 768px) {
             .form-grid { grid-template-columns: 1fr; }
             .form-group.full { grid-column: span 1; }
+            .order-card { padding: 20px; }
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -67,9 +73,9 @@
 
     <header>
         <div class="container">
-            <div class="logo"><img src="https://binggoclaw-hub.github.io/transnational-taiwan/螢幕擷取畫面_2024-03-04_090807.png" alt="Transnational Group" style="height:34px; vertical-align:middle; background:#fff; padding:4px 8px; border-radius:4px;"> ONLINE</div>
+            <div class="logo"><img src="https://binggoclaw-hub.github.io/transnational-taiwan/螢幕擷取畫面_2024-03-04_090807.png" alt="Transnational Group" style="height:40px; vertical-align:middle; filter: brightness(0) invert(1);"> ONLINE</div>
             <div class="user-info">
-                <span id="displayUserName">載入中...</span>
+                <span id="displayUserName" style="color:white">載入中...</span>
                 <span class="btn-logout" onclick="logout()">登出</span>
             </div>
         </div>
@@ -78,16 +84,27 @@
     <div class="order-content">
         <div class="container">
             <div class="order-card">
-                <h2>線上叫件表單</h2>
+                <h2>線上快遞叫件 <small style="font-size: 14px; font-weight: normal; color: var(--text-light);">Online Courier Request</small></h2>
+                
                 <form id="orderForm">
-                    <div class="step-section">
-                        <div class="step-title">
-                            <div class="step-num">1</div>
-                            <h3>選擇部門單位</h3>
-                        </div>
+                    <!-- Sender Section -->
+                    <div class="section-box sender-section">
+                        <div class="section-title"><i class="fas fa-box"></i> 📦 送件方資訊 Sender Information</div>
                         <div class="form-grid">
-                            <div class="form-group full">
-                                <label for="deptSelect">部門 / 分機</label>
+                            <div class="form-group">
+                                <label>快遞類型 Type</label>
+                                <select id="expressType" required>
+                                    <option value="一般件">一般件 Standard</option>
+                                    <option value="急件">急件 Urgent</option>
+                                    <option value="來回件">來回件 Round-trip</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>叫件日期 Date</label>
+                                <input type="text" id="orderDate" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label>部門 / 分機 Department</label>
                                 <select id="deptSelect" required>
                                     <option value="">請選擇部門</option>
                                 </select>
@@ -97,58 +114,52 @@
                                 <input type="text" id="costCenter" readonly>
                             </div>
                             <div class="form-group">
-                                <label>銀行代號</label>
-                                <input type="text" id="bankCode" readonly>
+                                <label>送件人姓名 Sender Name</label>
+                                <input type="text" id="senderName" required placeholder="請輸入姓名">
+                            </div>
+                            <div class="form-group">
+                                <label>送件人電話 Sender Phone</label>
+                                <input type="tel" id="senderPhone" required placeholder="請輸入聯絡電話">
+                            </div>
+                            <div class="form-group full">
+                                <label>送件地址 Sender Address</label>
+                                <input type="text" id="senderAddress" required placeholder="例如：NKB 13F 或 完整外部地址">
+                            </div>
+                            <div class="form-group">
+                                <label>件數 Quantity</label>
+                                <input type="number" id="quantity" value="1" min="1" required>
                             </div>
                         </div>
                     </div>
 
-                    <div class="step-section">
-                        <div class="step-title">
-                            <div class="step-num">2</div>
-                            <h3>填寫配送資訊</h3>
-                        </div>
+                    <div class="divider"></div>
+
+                    <!-- Recipient Section -->
+                    <div class="section-box recipient-section">
+                        <div class="section-title"><i class="fas fa-paper-plane"></i> 📬 收件方資訊 Recipient Information</div>
                         <div class="form-grid">
                             <div class="form-group">
-                                <label for="expressType">快遞類型</label>
-                                <select id="expressType" required>
-                                    <option value="一般件">一般件</option>
-                                    <option value="急件">急件</option>
-                                    <option value="來回件">來回件</option>
-                                </select>
+                                <label>收件人姓名 Recipient Name</label>
+                                <input type="text" id="recipientName" required placeholder="請輸入收件人姓名">
                             </div>
                             <div class="form-group">
-                                <label for="sender">送件人</label>
-                                <input type="text" id="sender" required>
+                                <label>收件人電話 Recipient Phone</label>
+                                <input type="tel" id="recipientPhone" required placeholder="請輸入收件人電話">
                             </div>
                             <div class="form-group full">
-                                <label for="receiverAddr">收件地址</label>
-                                <input type="text" id="receiverAddr" placeholder="請輸入完整的收件地址" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="receiverName">收件人</label>
-                                <input type="text" id="receiverName" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="receiverPhone">收件人電話</label>
-                                <input type="tel" id="receiverPhone" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="itemCount">件數</label>
-                                <input type="number" id="itemCount" value="1" min="1" required>
-                            </div>
-                            <div class="form-group">
-                                <label>叫件日期</label>
-                                <input type="text" id="orderDate" readonly>
-                            </div>
-                            <div class="form-group full">
-                                <label for="memo">備註 / 交辦事項</label>
-                                <textarea id="memo" placeholder="如果有特殊需求請在此註明"></textarea>
+                                <label>收件地址 Recipient Address</label>
+                                <input type="text" id="recipientAddress" required placeholder="請輸入完整收件地址">
                             </div>
                         </div>
                     </div>
 
-                    <button type="submit" class="btn-submit">確認送出叫件申請</button>
+                    <!-- Remarks -->
+                    <div class="form-group full">
+                        <label>備註 / 交辦事項 Remarks</label>
+                        <textarea id="remarks" placeholder="如有特殊需求請在此註明..."></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit">確認送出叫件申請 SUBMIT REQUEST</button>
                 </form>
             </div>
         </div>
@@ -159,8 +170,8 @@
             <i class="fas fa-check-circle"></i>
             <h3>叫件成功！</h3>
             <p>您的單號為：<strong id="orderNum">TW20260811001</strong></p>
-            <p>系統已同步通知配送人員，請準備好您的文件。</p>
-            <button class="btn-close" onclick="closeSuccess()">回到表單</button>
+            <p>系統已同步通知德安交控中心，請準備好您的文件。</p>
+            <button class="btn-close" onclick="closeSuccess()">回到首頁</button>
         </div>
     </div>
 
@@ -174,7 +185,6 @@
         }
 
         document.getElementById('displayUserName').textContent = customerName;
-        document.getElementById('bankCode').value = customerId;
         document.getElementById('orderDate').value = new Date().toLocaleDateString();
 
         // 初始化部門資料
@@ -202,6 +212,9 @@
         deptSelect.addEventListener('change', function() {
             const selected = this.options[this.selectedIndex];
             document.getElementById('costCenter').value = selected.dataset.cost || '';
+            if (selected.value) {
+                document.getElementById('senderAddress').value = selected.value;
+            }
         });
 
         document.getElementById('orderForm').addEventListener('submit', function(e) {
@@ -212,9 +225,7 @@
         });
 
         function closeSuccess() {
-            document.getElementById('successOverlay').style.display = 'none';
-            document.getElementById('orderForm').reset();
-            document.getElementById('orderDate').value = new Date().toLocaleDateString();
+            window.location.href = 'index.html';
         }
 
         function logout() {
