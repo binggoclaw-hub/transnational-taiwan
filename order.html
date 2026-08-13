@@ -15,7 +15,7 @@
             --border-hair: #e5e9ee;
             --white: #ffffff;
             --sender-bg: #fff9e6;
-            --recipient-bg: #f0f7ff;
+            --recipient-bg: #fff0f3;
             --transition: all 0.3s ease;
         }
 
@@ -26,18 +26,20 @@
 
         header { background-color: var(--primary-color); color: var(--white); padding: 15px 0; }
         header .container { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 24px; font-weight: bold; letter-spacing: 1px; color: var(--white); display: flex; align-items: center; }
+        .logo { display: flex; align-items: center; }
+        .logo img { height: 42px; mix-blend-mode: screen; }
         
         .user-info { display: flex; align-items: center; gap: 20px; }
         .btn-logout { color: var(--white); opacity: 0.8; font-size: 14px; text-decoration: underline; cursor: pointer; }
 
         .order-content { padding: 40px 0; }
         .order-card { background: var(--white); padding: 40px; border-radius: 8px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
-        .order-card h2 { margin-bottom: 30px; color: var(--primary-color); border-bottom: 2px solid var(--secondary-color); padding-bottom: 15px; }
+        .order-card h2 { margin-bottom: 10px; color: var(--primary-color); }
+        .form-hint { background: #eef2f7; padding: 15px; border-radius: 4px; margin-bottom: 30px; border-left: 4px solid var(--primary-color); font-weight: bold; }
 
-        .section-box { padding: 30px; border-radius: 8px; margin-bottom: 30px; border: 2px solid transparent; }
+        .section-box { padding: 30px; border-radius: 8px; margin-bottom: 0; border: 2px solid transparent; }
         .sender-section { background-color: var(--sender-bg); border-color: #ffeeb3; }
-        .recipient-section { background-color: var(--recipient-bg); border-color: #d1e6ff; }
+        .recipient-section { background-color: var(--recipient-bg); border-color: #ffdce5; }
         
         .section-title { font-size: 20px; font-weight: 700; margin-bottom: 20px; color: var(--primary-color); display: flex; align-items: center; gap: 10px; }
         .section-title i { color: var(--secondary-color); }
@@ -49,9 +51,9 @@
         .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-family: inherit; background: var(--white); }
         .form-group input[readonly] { background-color: #f0f2f5; cursor: not-allowed; }
 
-        .divider { height: 4px; background: repeating-linear-gradient(45deg, #ccc, #ccc 10px, #eee 10px, #eee 20px); margin: 40px 0; border-radius: 2px; }
+        .divider { height: 0; border-top: 3px solid #ddd; margin: 30px 0; }
 
-        .btn-submit { background-color: var(--primary-color); color: var(--white); border: none; padding: 18px; border-radius: 4px; cursor: pointer; font-weight: bold; width: 100%; transition: var(--transition); font-size: 18px; margin-top: 20px; }
+        .btn-submit { background-color: var(--primary-color); color: var(--white); border: none; padding: 18px; border-radius: 4px; cursor: pointer; font-weight: bold; width: 100%; transition: var(--transition); font-size: 18px; margin-top: 30px; }
         .btn-submit:hover { background-color: var(--secondary-color); transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
 
         .success-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: none; align-items: center; justify-content: center; z-index: 2000; }
@@ -73,7 +75,7 @@
 
     <header>
         <div class="container">
-            <div class="logo"><img src="https://binggoclaw-hub.github.io/transnational-taiwan/螢幕擷取畫面_2024-03-04_090807.png" alt="Transnational Group" style="height:40px; vertical-align:middle; filter: brightness(0) invert(1);"> ONLINE</div>
+            <div class="logo"><img src="https://binggoclaw-hub.github.io/transnational-taiwan/螢幕擷取畫面_2024-03-04_090807.png" alt="Transnational Group" style="height:42px; vertical-align:middle; mix-blend-mode: screen;"> ONLINE</div>
             <div class="user-info">
                 <span id="displayUserName" style="color:white">載入中...</span>
                 <span class="btn-logout" onclick="logout()">登出</span>
@@ -86,6 +88,10 @@
             <div class="order-card">
                 <h2>線上快遞叫件 <small style="font-size: 14px; font-weight: normal; color: var(--text-light);">Online Courier Request</small></h2>
                 
+                <div class="form-hint">
+                    💡 送件資訊請填寫於下方金色區塊，收件資訊請填寫於粉色區塊。
+                </div>
+
                 <form id="orderForm">
                     <!-- Sender Section -->
                     <div class="section-box sender-section">
@@ -153,6 +159,8 @@
                         </div>
                     </div>
 
+                    <div class="divider"></div>
+
                     <!-- Remarks -->
                     <div class="form-group full">
                         <label>備註 / 交辦事項 Remarks</label>
@@ -176,7 +184,7 @@
     </div>
 
     <script>
-        // 檢查登入狀態
+        // Check login status
         const customerId = sessionStorage.getItem('customer_id');
         const customerName = sessionStorage.getItem('customer_name');
         
@@ -187,7 +195,7 @@
         document.getElementById('displayUserName').textContent = customerName;
         document.getElementById('orderDate').value = new Date().toLocaleDateString();
 
-        // 初始化部門資料
+        // Initialize department data
         if (!localStorage.getItem('transnational_depts')) {
             const defaultDepts = [
                 { customerId: 'HSBC', name: 'NKB 13F', ext: '6631-2319', costCenter: '11-001-388' },

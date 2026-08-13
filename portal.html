@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>線上服務入口 | Transnational Taiwan 德安台灣</title>
+    <style>
+        :root {
+            --primary-color: #0b1622;
+            --secondary-color: #c9971c;
+            --secondary-light: #e6b94a;
+            --bg-light: #f7f8fa;
+            --text-main: #33424f;
+            --text-light: #64748b;
+            --white: #ffffff;
+            --transition: all 0.3s ease;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Helvetica Neue', Helvetica, Arial, '微軟正黑體', sans-serif; color: var(--text-main); line-height: 1.6; background-color: var(--bg-light); }
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        header { background-color: var(--primary-color); color: var(--white); padding: 15px 0; position: sticky; top: 0; z-index: 1000; }
+        header .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; }
+        .logo img { height: 42px; mix-blend-mode: screen; }
+
+        nav ul { display: flex; align-items: center; }
+        nav ul li { margin-left: 30px; }
+        nav ul li a:hover { color: var(--secondary-color); }
+        .btn-online { background-color: var(--secondary-color); color: var(--white); padding: 8px 20px; border-radius: 4px; font-weight: 500; }
+
+        .portal-section { padding: 80px 0; min-height: 70vh; display: flex; align-items: center; }
+        .portal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; width: 100%; }
+        
+        .portal-card { background: var(--white); padding: 50px 30px; border-radius: 12px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.05); cursor: pointer; border: 2px solid transparent; }
+        .portal-card:hover { transform: translateY(-10px); border-color: var(--secondary-color); }
+        .portal-card i { font-size: 60px; color: var(--secondary-color); margin-bottom: 25px; display: block; }
+        .portal-card h3 { font-size: 24px; color: var(--primary-color); margin-bottom: 15px; }
+        .portal-card p { color: var(--text-light); }
+
+        /* Under Construction Animation */
+        #construction-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(11, 22, 34, 0.95);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: var(--white);
+        }
+        
+        .worker-container {
+            position: relative;
+            width: 300px;
+            height: 150px;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        .worker {
+            position: absolute;
+            bottom: 0;
+            right: -50px;
+            font-size: 60px;
+            animation: walkLeft 6s linear infinite;
+        }
+
+        .tool {
+            display: inline-block;
+            animation: swing 1s ease-in-out infinite alternate;
+            transform-origin: bottom right;
+        }
+
+        @keyframes walkLeft {
+            0% { right: -50px; }
+            100% { right: 350px; }
+        }
+
+        @keyframes swing {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(-45deg); }
+        }
+
+        .close-btn {
+            margin-top: 30px;
+            padding: 10px 30px;
+            background: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        footer { background-color: var(--primary-color); color: var(--white); padding: 80px 0 20px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 50px; }
+        .footer-col h4 { font-size: 18px; margin-bottom: 25px; color: var(--secondary-color); }
+        .footer-col p { color: rgba(255,255,255,0.7); font-size: 14px; }
+        .footer-links a { color: rgba(255,255,255,0.7); font-size: 14px; }
+        .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 14px; color: rgba(255,255,255,0.5); }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo"><img src="https://binggoclaw-hub.github.io/transnational-taiwan/螢幕擷取畫面_2024-03-04_090807.png" alt="Transnational Group"></a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">首頁</a></li>
+                    <li><a href="about.html">關於我們</a></li>
+                    <li><a href="services.html">服務項目</a></li>
+                    <li><a href="contact.html">聯絡我們</a></li>
+                    <li><a href="portal.html" class="btn-online">線上服務</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="portal-section">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 60px;">
+                <h2 style="font-size: 36px; color: var(--primary-color);">線上服務選單</h2>
+                <p style="color: var(--text-light); margin-top: 10px;">請選擇您需要的服務項目</p>
+            </div>
+            
+            <div class="portal-grid">
+                <a href="login.html" class="portal-card">
+                    <i class="fas fa-shipping-fast"></i>
+                    <h3>📦 快遞叫件</h3>
+                    <p>登入系統進行線上預約與叫件服務</p>
+                </a>
+                
+                <div class="portal-card" onclick="showConstruction()">
+                    <i class="fas fa-search-location"></i>
+                    <h3>🔍 單號追蹤</h3>
+                    <p>輸入單號即時掌握配送進度</p>
+                </div>
+                
+                <div class="portal-card" onclick="showConstruction()">
+                    <i class="fas fa-file-alt"></i>
+                    <h3>📄 文件查詢</h3>
+                    <p>查詢歷史配送紀錄與電子簽單</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="construction-overlay">
+        <div class="worker-container">
+            <div class="worker">
+                👷<span class="tool">🔨</span>
+            </div>
+        </div>
+        <h2 style="font-size: 32px; margin-bottom: 10px;">功能建置中</h2>
+        <p style="font-size: 18px; opacity: 0.8;">敬請期待，我們正努力為您提供更好的服務！</p>
+        <button class="close-btn" onclick="hideConstruction()">返回選單</button>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4 class="logo"><img src="https://binggoclaw-hub.github.io/transnational-taiwan/螢幕擷取畫面_2024-03-04_090807.png" alt="Transnational Group"></h4>
+                    <p>新加坡商德安中華有限公司台灣分公司，專業金融物流服務領導者，深耕台灣四十載。</p>
+                </div>
+                <div class="footer-col">
+                    <h4>核心服務</h4>
+                    <ul class="footer-links">
+                        <li><a href="services.html#service1">銀行文件遞送</a></li>
+                        <li><a href="services.html#service2">GDM 快遞服務</a></li>
+                        <li><a href="services.html#service3">智能安全箱</a></li>
+                        <li><a href="services.html#service4">收發室管理</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>快速連結</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">首頁</a></li>
+                        <li><a href="about.html">關於我們</a></li>
+                        <li><a href="contact.html">服務據點</a></li>
+                        <li><a href="portal.html">線上服務</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>聯絡我們</h4>
+                    <p>台北總部：台北市中正區青島東路7號3樓</p>
+                    <p>電話：(02) 2351-0808</p>
+                    <p>Email: bing.chuang@transnational-grp.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 新加坡商德安中華有限公司台灣分公司 Transnational Taiwan. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function showConstruction() {
+            document.getElementById('construction-overlay').style.display = 'flex';
+        }
+        function hideConstruction() {
+            document.getElementById('construction-overlay').style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>
