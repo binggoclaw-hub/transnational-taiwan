@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>產品方案 | Transnational Taiwan 德安台灣</title>
+    <style>
+        :root {
+            --primary-color: #0b1622;
+            --secondary-color: #c9971c;
+            --secondary-light: #e6b94a;
+            --bg-light: #f7f8fa;
+            --text-main: #33424f;
+            --text-light: #64748b;
+            --border-hair: #e5e9ee;
+            --white: #ffffff;
+            --transition: all 0.3s ease;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Helvetica Neue', Helvetica, Arial, '微軟正黑體', sans-serif; color: var(--text-main); line-height: 1.6; background-color: var(--white); }
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        ul { list-style: none; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        header { background-color: var(--primary-color); color: var(--white); padding: 15px 0; position: sticky; top: 0; z-index: 1000; }
+        header .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; }
+        .logo img { height: 42px; mix-blend-mode: screen; }
+
+        nav ul { display: flex; align-items: center; }
+        nav ul li { margin-left: 30px; }
+        nav ul li a:hover { color: var(--secondary-color); }
+        .btn-online { background-color: var(--secondary-color); color: var(--white); padding: 8px 20px; border-radius: 4px; font-weight: 500; }
+
+        .banner {
+            background: linear-gradient(rgba(11, 22, 34, 0.7), rgba(11, 22, 34, 0.7)), url('https://binggoclaw-hub.github.io/transnational-taiwan/05_%E6%96%87%E4%BB%B6%E8%99%95%E7%90%86%E5%AE%A4%E5%AF%A6%E6%99%AF.png');
+            background-size: cover;
+            background-position: center;
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+        }
+
+        .banner h1 { font-size: 36px; }
+
+        section { padding: 80px 0; }
+        .section-title { text-align: center; margin-bottom: 60px; }
+        .section-title h2 { font-size: 32px; color: var(--primary-color); position: relative; padding-bottom: 15px; }
+        .section-title h2::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 60px; height: 3px; background-color: var(--secondary-color); }
+
+        .intro-text { text-align: center; max-width: 800px; margin: 0 auto 60px; font-size: 18px; color: var(--text-main); }
+
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); gap: 40px; }
+        .product-card { background: var(--bg-light); padding: 40px; border-radius: 12px; display: flex; gap: 30px; align-items: flex-start; }
+        .product-icon { font-size: 50px; color: var(--secondary-color); }
+        .product-info h3 { font-size: 22px; color: var(--primary-color); margin-bottom: 15px; }
+        .product-info p { font-size: 15px; color: var(--text-main); }
+
+        .solution-section { background-color: var(--bg-light); }
+        .solution-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px; }
+        .solution-item { background: var(--white); padding: 20px 25px; border-radius: 8px; border-left: 4px solid var(--secondary-color); box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .solution-item h4 { color: var(--primary-color); font-size: 16px; margin-bottom: 5px; }
+        .solution-item p { color: var(--text-light); font-size: 14px; }
+
+        footer { background-color: var(--primary-color); color: var(--white); padding: 80px 0 20px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 50px; }
+        .footer-col h4 { font-size: 18px; margin-bottom: 25px; color: var(--secondary-color); }
+        .footer-col p { color: rgba(255,255,255,0.7); font-size: 14px; }
+        .footer-links a { color: rgba(255,255,255,0.7); font-size: 14px; }
+        .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 14px; color: rgba(255,255,255,0.5); }
+
+        @media (max-width: 768px) {
+            .product-grid { grid-template-columns: 1fr; }
+            .product-card { flex-direction: column; text-align: center; }
+            .product-icon { margin: 0 auto; }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo"><img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663752346972/UtMhcZkYSXunXleZ.jpg" alt="Transnational Group" style="height:42px; mix-blend-mode: screen;"></a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">首頁</a></li>
+                    <li><a href="about.html">關於我們</a></li>
+                    <li><a href="services.html">服務項目</a></li>
+                    <li><a href="global.html">全球據點</a></li>
+                    <li><a href="products.html">產品方案</a></li>
+                    <li><a href="contact.html">聯絡我們</a></li>
+                    <li><a href="portal.html" class="btn-online">線上服務</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="banner">
+        <div class="container">
+            <h1>產品方案 <br><small style="font-size: 0.5em;">Products & Solutions</small></h1>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="intro-text">
+                我們提供多元化的高品質產品與物流解決方案，滿足客戶在安全、效率與創新方面的需求。
+            </div>
+
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-icon"><i class="fas fa-stamp"></i></div>
+                    <div class="product-info">
+                        <h3>Tamper-Evident Security Seals 防偽安全封條</h3>
+                        <p>我們提供與各式快遞袋搭配使用的防偽安全封條，每個封條均有條碼編號，提供黃、白、綠、藍、紅等多色選擇，確保交接過程的唯一性與不可竄改性。</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-icon"><i class="fas fa-shopping-bag"></i></div>
+                    <div class="product-info">
+                        <h3>Tamper-Evident Security Bag 防偽安全袋</h3>
+                        <p>耐用且可重複使用的快遞袋，透過安全封條提供防偽功能。提供多種尺寸與配置，滿足文件、現金及資產處理等多元需求，符合國際金融配送標準。</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-icon"><i class="fas fa-briefcase-medical"></i></div>
+                    <div class="product-info">
+                        <h3>Secure Medical Carriers 醫療安全載具</h3>
+                        <p>配備隔熱保護層，可監控並維持內容物溫度長達20小時。堅固且具抗菌特性，為實驗室及醫療用戶提供安全、可靠的溫控生物材料運送方案。</p>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-icon"><i class="fas fa-box-open"></i></div>
+                    <div class="product-info">
+                        <h3>Smart Security Containers 智能安全箱 (FMTec SECOLO)</h3>
+                        <p>專為保護、監控及追蹤貴重物品而設計。具備智能鎖定、遠端解鎖、長距離識別、防盜警報、事件紀錄、環境感測器及資料記錄等進階安全功能。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="solution-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>全方位解決方案</h2>
+                <p>Comprehensive Solutions</p>
+            </div>
+            <div class="solution-grid">
+                <div class="solution-item">
+                    <h4>Distribution Management</h4>
+                    <p>配送管理</p>
+                </div>
+                <div class="solution-item">
+                    <h4>Mail & Mailroom Management</h4>
+                    <p>郵件與收發室管理</p>
+                </div>
+                <div class="solution-item">
+                    <h4>Information and Records Management</h4>
+                    <p>資訊與檔案管理</p>
+                </div>
+                <div class="solution-item">
+                    <h4>Medical Distribution</h4>
+                    <p>醫療配送</p>
+                </div>
+                <div class="solution-item">
+                    <h4>Cash Management</h4>
+                    <p>現金管理</p>
+                </div>
+                <div class="solution-item">
+                    <h4>Security Solutions</h4>
+                    <p>安全管理</p>
+                </div>
+                <div class="solution-item">
+                    <h4>Electronic Document Imaging</h4>
+                    <p>電子文件影像歸檔</p>
+                </div>
+                <div class="solution-item">
+                    <h4>Digital Signing and Workflow Automation</h4>
+                    <p>數位簽核與流程自動化</p>
+                </div>
+                <div class="solution-item">
+                    <h4>Middleware API Management Solutions</h4>
+                    <p>API 中介軟體管理</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4 class="logo"><img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663752346972/UtMhcZkYSXunXleZ.jpg" alt="Transnational Group" style="height:42px; mix-blend-mode: screen;"></h4>
+                    <p>新加坡商德安中華有限公司台灣分公司，專業金融物流服務領導者，深耕台灣四十載。</p>
+                </div>
+                <div class="footer-col">
+                    <h4>核心服務</h4>
+                    <ul class="footer-links">
+                        <li><a href="services.html#service1">銀行文件遞送</a></li>
+                        <li><a href="services.html#service2">GDM 快遞服務</a></li>
+                        <li><a href="services.html#service3">智能安全箱</a></li>
+                        <li><a href="services.html#service4">收發室管理</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>快速連結</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">首頁</a></li>
+                        <li><a href="about.html">關於我們</a></li>
+                        <li><a href="contact.html">服務據點</a></li>
+                        <li><a href="portal.html">線上服務</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>聯絡我們</h4>
+                    <p>台北總部：台北市中正區青島東路7號3樓</p>
+                    <p>電話：(02) 2351-0808</p>
+                    <p>Email: bing.chuang@transnational-grp.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 新加坡商德安中華有限公司台灣分公司 Transnational Taiwan. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
