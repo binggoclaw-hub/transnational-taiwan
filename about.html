@@ -26,7 +26,7 @@
         header { background-color: var(--primary-color); color: var(--white); padding: 15px 0; position: sticky; top: 0; z-index: 1000; }
         header .container { display: flex; justify-content: space-between; align-items: center; }
         .logo { display: flex; align-items: center; }
-        .logo img { height: 42px; mix-blend-mode: screen; }
+        .logo img { height: 42px; }
 
         nav ul { display: flex; align-items: center; }
         nav ul li { margin-left: 30px; }
@@ -59,16 +59,19 @@
         .about-image img { width: 100%; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
 
         /* Timeline Design */
+        .timeline-section { background-color: #0b1622; color: #fff; }
         .timeline-container { position:relative; max-width:1000px; margin:0 auto; padding:20px 0; }
-        .timeline-line { position:absolute; left:50%; top:0; bottom:0; width:3px; background:linear-gradient(to bottom, #c9971c, #e6b94a); transform:translateX(-50%); }
-        .timeline-item { display:flex; margin-bottom:50px; align-items:center; }
+        .timeline-line { position:absolute; left:50%; top:0; bottom:0; width:2px; background:rgba(201,151,28,0.3); transform:translateX(-50%); }
+        .timeline-item { display:flex; margin-bottom:50px; align-items:center; width: 100%; }
         .timeline-content { width:45%; }
         .timeline-dot { width:10%; text-align:center; position: relative; z-index: 2; }
-        .dot { width:20px; height:20px; background:#c9971c; border-radius:50%; margin:0 auto; box-shadow:0 0 15px rgba(201,151,28,0.6); }
-        .dot.current { width:24px; height:24px; box-shadow:0 0 20px rgba(201,151,28,0.8); border:3px solid #fff; }
+        .dot { width:16px; height:16px; background:#c9971c; border-radius:50%; margin:0 auto; box-shadow:0 0 10px rgba(201,151,28,0.5); border: 2px solid #0b1622; }
+        .dot.current { width:22px; height:22px; background:#c9971c; border: 4px solid #fff; box-shadow:0 0 20px rgba(201,151,28,0.8); }
         
-        .timeline-text h4 { color:#c9971c; font-size:24px; margin:0; }
-        .timeline-text p { color:#ccc; margin:5px 0 0; font-size: 15px; line-height: 1.5; }
+        .timeline-text { background: rgba(255,255,255,0.05); padding: 25px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); transition: var(--transition); }
+        .timeline-text:hover { background: rgba(255,255,255,0.1); transform: translateY(-5px); border-color: var(--secondary-color); }
+        .timeline-text h4 { color:#c9971c; font-size:22px; margin-bottom: 10px; }
+        .timeline-text p { color:#e0e0e0; margin:0; font-size: 15px; line-height: 1.6; }
 
         /* Philosophy */
         .philosophy-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
@@ -76,7 +79,7 @@
         .philosophy-card i { font-size: 40px; color: var(--secondary-color); margin-bottom: 20px; }
         .philosophy-card h3 { margin-bottom: 15px; color: var(--primary-color); }
 
-        /* Fleet/Locations */
+        /* Fleet/Stats */
         .fleet-section { background-color: var(--primary-color); color: var(--white); }
         .fleet-content { display: flex; gap: 50px; align-items: center; }
         .fleet-text { flex: 1; }
@@ -94,9 +97,10 @@
         @media (max-width: 768px) {
             .about-brief, .fleet-content { flex-direction: column; }
             .timeline-line { left: 20px; transform: none; }
-            .timeline-item { flex-direction: row !important; text-align: left !important; }
+            .timeline-item { flex-direction: row !important; }
             .timeline-content { width: 100% !important; padding: 0 0 0 40px !important; }
             .timeline-dot { width: 40px !important; order: -1; }
+            .timeline-text { text-align: left !important; }
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -105,7 +109,7 @@
 
     <header>
         <div class="container">
-            <a href="index.html" class="logo"><img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663752346972/UtMhcZkYSXunXleZ.jpg" alt="Transnational Group" style="height:42px; mix-blend-mode: screen;"></a>
+            <a href="index.html" class="logo"><img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663752346972/UtMhcZkYSXunXleZ.jpg" alt="Transnational Group" style="height:42px;"></a>
             <nav>
                 <ul>
                     <li><a href="index.html">首頁</a></li>
@@ -144,88 +148,103 @@
         </div>
     </section>
 
-    <section style="background:linear-gradient(135deg, #0b1622 0%, #1a2a3a 100%); padding:80px 20px;">
-      <h2 style="text-align:center; color:#fff; font-size:32px; margin-bottom:60px;">發展里程碑 <span style="color:#c9971c;">Milestones</span></h2>
-      <div class="timeline-container">
-        <div class="timeline-line"></div>
-        
-        <!-- 1978 -->
-        <div class="timeline-item">
-          <div class="timeline-content timeline-text" style="text-align:right; padding-right:30px;">
-            <h4>1978</h4>
-            <p>德安集團於新加坡成立，開啟亞太物流服務事業</p>
-          </div>
-          <div class="timeline-dot"><div class="dot"></div></div>
-          <div class="timeline-content"></div>
+    <section class="timeline-section">
+      <div class="container">
+        <div class="section-title">
+          <h2 style="color: #fff;">發展里程碑</h2>
+          <p style="color: var(--secondary-color);">Development Milestones</p>
         </div>
-        
-        <!-- 1999 -->
-        <div class="timeline-item">
-          <div class="timeline-content"></div>
-          <div class="timeline-dot"><div class="dot"></div></div>
-          <div class="timeline-content timeline-text" style="text-align:left; padding-left:30px;">
-            <h4>1999</h4>
-            <p>德安台灣正式成立，設立台北總公司，服務台灣金融業客戶</p>
+        <div class="timeline-container">
+          <div class="timeline-line"></div>
+          
+          <!-- 1978 -->
+          <div class="timeline-item">
+            <div class="timeline-content timeline-text" style="text-align:right;">
+              <h4>1978</h4>
+              <p>德安集團於新加坡成立，開啟亞太物流服務事業</p>
+            </div>
+            <div class="timeline-dot"><div class="dot"></div></div>
+            <div class="timeline-content"></div>
           </div>
-        </div>
-        
-        <!-- 2004 -->
-        <div class="timeline-item">
-          <div class="timeline-content timeline-text" style="text-align:right; padding-right:30px;">
-            <h4>2004</h4>
-            <p>全台六大分公司佈局完成（台北、桃園、新竹、台中、台南、高雄），250+條配送路線全面啟動</p>
+          
+          <!-- 1999 -->
+          <div class="timeline-item">
+            <div class="timeline-content"></div>
+            <div class="timeline-dot"><div class="dot"></div></div>
+            <div class="timeline-content timeline-text" style="text-align:left;">
+              <h4>1999</h4>
+              <p>德安台灣正式成立，設立台北總公司</p>
+            </div>
           </div>
-          <div class="timeline-dot"><div class="dot"></div></div>
-          <div class="timeline-content"></div>
-        </div>
-        
-        <!-- 2012 -->
-        <div class="timeline-item">
-          <div class="timeline-content"></div>
-          <div class="timeline-dot"><div class="dot"></div></div>
-          <div class="timeline-content timeline-text" style="text-align:left; padding-left:30px;">
-            <h4>2012</h4>
-            <p>引進歐洲 FMTec SECOLO 智能安全箱系統，成為亞洲區總代理，提升高價值物件運送安全等級</p>
+          
+          <!-- 2004 -->
+          <div class="timeline-item">
+            <div class="timeline-content timeline-text" style="text-align:right;">
+              <h4>2004</h4>
+              <p>全台六大分公司佈局完成，250+條配送路線啟動</p>
+            </div>
+            <div class="timeline-dot"><div class="dot"></div></div>
+            <div class="timeline-content"></div>
           </div>
-        </div>
-        
-        <!-- 2018 -->
-        <div class="timeline-item">
-          <div class="timeline-content timeline-text" style="text-align:right; padding-right:30px;">
-            <h4>2018</h4>
-            <p>受邀參加國際物流安全展覽，展示創新安全物流解決方案</p>
+          
+          <!-- 2012 -->
+          <div class="timeline-item">
+            <div class="timeline-content"></div>
+            <div class="timeline-dot"><div class="dot"></div></div>
+            <div class="timeline-content timeline-text" style="text-align:left;">
+              <h4>2012</h4>
+              <p>引進歐洲 FMTec SECOLO 智能安全箱系統，成為亞洲區總代理</p>
+            </div>
           </div>
-          <div class="timeline-dot"><div class="dot"></div></div>
-          <div class="timeline-content"></div>
-        </div>
-        
-        <!-- 2023 -->
-        <div class="timeline-item">
-          <div class="timeline-content"></div>
-          <div class="timeline-dot"><div class="dot"></div></div>
-          <div class="timeline-content timeline-text" style="text-align:left; padding-left:30px;">
-            <h4>2023</h4>
-            <p>導入 RFID 無線追蹤管理系統 Logi-Q，全面提升物件追蹤精準度與效率</p>
+          
+          <!-- 2013 -->
+          <div class="timeline-item">
+            <div class="timeline-content timeline-text" style="text-align:right;">
+              <h4>2013</h4>
+              <p>受台灣中央銀行與票據交換所邀請舉辦研討會；導入 RFID Logi-Q 系統</p>
+            </div>
+            <div class="timeline-dot"><div class="dot"></div></div>
+            <div class="timeline-content"></div>
           </div>
-        </div>
-        
-        <!-- 2024-2025 -->
-        <div class="timeline-item">
-          <div class="timeline-content timeline-text" style="text-align:right; padding-right:30px;">
-            <h4>2024-2025</h4>
-            <p>與 Apple AirTag 技術合作，強化物件即時追蹤能力，提升配送透明度與客戶信賴感</p>
+          
+          <!-- 2015 -->
+          <div class="timeline-item">
+            <div class="timeline-content"></div>
+            <div class="timeline-dot"><div class="dot"></div></div>
+            <div class="timeline-content timeline-text" style="text-align:left;">
+              <h4>2015</h4>
+              <p>受台灣珠寶首飾協會邀請參加展覽並參與「安全運送研討講座」</p>
+            </div>
           </div>
-          <div class="timeline-dot"><div class="dot"></div></div>
-          <div class="timeline-content"></div>
-        </div>
-        
-        <!-- 2026 -->
-        <div class="timeline-item">
-          <div class="timeline-content"></div>
-          <div class="timeline-dot"><div class="dot current"></div></div>
-          <div class="timeline-content timeline-text" style="text-align:left; padding-left:30px;">
-            <h4>2026</h4>
-            <p>ESG 永續發展計畫啟動：少紙化作業全面導入、數位簽核系統上線、各項智慧物流系統整合升級</p>
+          
+          <!-- 2023 -->
+          <div class="timeline-item">
+            <div class="timeline-content timeline-text" style="text-align:right;">
+              <h4>2023</h4>
+              <p>提供業界異地備援解決方案；受邀參加台北國際金融博覽會</p>
+            </div>
+            <div class="timeline-dot"><div class="dot"></div></div>
+            <div class="timeline-content"></div>
+          </div>
+          
+          <!-- 2024-2025 -->
+          <div class="timeline-item">
+            <div class="timeline-content"></div>
+            <div class="timeline-dot"><div class="dot"></div></div>
+            <div class="timeline-content timeline-text" style="text-align:left;">
+              <h4>2024-2025</h4>
+              <p>與 Apple AirTag 技術合作，強化物件即時追蹤</p>
+            </div>
+          </div>
+          
+          <!-- 2026 -->
+          <div class="timeline-item">
+            <div class="timeline-content timeline-text" style="text-align:right;">
+              <h4>2026</h4>
+              <p>ESG 永續發展計畫啟動，少紙化作業全面導入，數位簽核系統上線</p>
+            </div>
+            <div class="timeline-dot"><div class="dot current"></div></div>
+            <div class="timeline-content"></div>
           </div>
         </div>
       </div>
@@ -296,7 +315,7 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <h4 class="logo"><img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663752346972/UtMhcZkYSXunXleZ.jpg" alt="Transnational Group" style="height:42px; mix-blend-mode: screen;"></h4>
+                    <h4 class="logo"><img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663752346972/UtMhcZkYSXunXleZ.jpg" alt="Transnational Group" style="height:42px;"></h4>
                     <p>新加坡商德安中華有限公司台灣分公司，專業金融物流服務領導者，深耕台灣四十載。</p>
                 </div>
                 <div class="footer-col">

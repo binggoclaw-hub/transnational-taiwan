@@ -12,7 +12,6 @@
             --bg-light: #f7f8fa;
             --text-main: #33424f;
             --text-light: #64748b;
-            --border-hair: #e5e9ee;
             --white: #ffffff;
             --transition: all 0.3s ease;
         }
@@ -26,7 +25,7 @@
         header { background-color: var(--primary-color); color: var(--white); padding: 15px 0; position: sticky; top: 0; z-index: 1000; }
         header .container { display: flex; justify-content: space-between; align-items: center; }
         .logo { display: flex; align-items: center; }
-        .logo img { height: 42px; mix-blend-mode: screen; }
+        .logo img { height: 42px; }
 
         nav ul { display: flex; align-items: center; }
         nav ul li { margin-left: 30px; }
@@ -34,36 +33,36 @@
         .btn-online { background-color: var(--secondary-color); color: var(--white); padding: 8px 20px; border-radius: 4px; font-weight: 500; }
 
         .banner {
-            background: linear-gradient(rgba(11, 22, 34, 0.7), rgba(11, 22, 34, 0.7)), url('https://binggoclaw-hub.github.io/transnational-taiwan/05_%E6%96%87%E4%BB%B6%E8%99%95%E7%90%86%E5%AE%A4%E5%AF%A6%E6%99%AF.png');
+            background: linear-gradient(rgba(11, 22, 34, 0.7), rgba(11, 22, 34, 0.7)), url('https://www.transnational-grp.com/wp-content/uploads/2023/02/banner-solutions.jpg');
             background-size: cover;
             background-position: center;
-            height: 250px;
+            height: 300px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--white);
+            text-align: center;
         }
-
-        .banner h1 { font-size: 36px; }
+        .banner h1 { font-size: 42px; }
 
         section { padding: 80px 0; }
         .section-title { text-align: center; margin-bottom: 60px; }
-        .section-title h2 { font-size: 32px; color: var(--primary-color); position: relative; padding-bottom: 15px; }
-        .section-title h2::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 60px; height: 3px; background-color: var(--secondary-color); }
+        .section-title h2 { font-size: 32px; color: var(--primary-color); }
 
-        .intro-text { text-align: center; max-width: 800px; margin: 0 auto 60px; font-size: 18px; color: var(--text-main); }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .product-card { background: var(--bg-light); border-radius: 12px; overflow: hidden; transition: var(--transition); border: 1px solid var(--border-hair); }
+        .product-card:hover { transform: translateY(-10px); box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .product-img { height: 220px; background-size: cover; background-position: center; }
+        .product-info { padding: 25px; text-align: center; }
+        .product-info h3 { font-size: 20px; color: var(--primary-color); margin-bottom: 15px; }
+        .product-info p { font-size: 14px; color: var(--text-light); }
 
-        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); gap: 40px; }
-        .product-card { background: var(--bg-light); padding: 40px; border-radius: 12px; display: flex; gap: 30px; align-items: flex-start; }
-        .product-icon { font-size: 50px; color: var(--secondary-color); }
-        .product-info h3 { font-size: 22px; color: var(--primary-color); margin-bottom: 15px; }
-        .product-info p { font-size: 15px; color: var(--text-main); }
-
-        .solution-section { background-color: var(--bg-light); }
-        .solution-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px; }
-        .solution-item { background: var(--white); padding: 20px 25px; border-radius: 8px; border-left: 4px solid var(--secondary-color); box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        .solution-item h4 { color: var(--primary-color); font-size: 16px; margin-bottom: 5px; }
-        .solution-item p { color: var(--text-light); font-size: 14px; }
+        .solutions-section { background-color: var(--primary-color); color: var(--white); }
+        .solutions-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+        .solution-item { text-align: center; }
+        .solution-item i { font-size: 48px; color: var(--secondary-color); margin-bottom: 20px; }
+        .solution-item h4 { font-size: 20px; margin-bottom: 15px; }
+        .solution-item p { font-size: 14px; opacity: 0.8; }
 
         footer { background-color: var(--primary-color); color: var(--white); padding: 80px 0 20px; }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 50px; }
@@ -72,10 +71,11 @@
         .footer-links a { color: rgba(255,255,255,0.7); font-size: 14px; }
         .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 14px; color: rgba(255,255,255,0.5); }
 
+        @media (max-width: 992px) {
+            .solutions-grid { grid-template-columns: 1fr 1fr; }
+        }
         @media (max-width: 768px) {
-            .product-grid { grid-template-columns: 1fr; }
-            .product-card { flex-direction: column; text-align: center; }
-            .product-icon { margin: 0 auto; }
+            .solutions-grid { grid-template-columns: 1fr; }
         }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -84,7 +84,7 @@
 
     <header>
         <div class="container">
-            <a href="index.html" class="logo"><img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663752346972/UtMhcZkYSXunXleZ.jpg" alt="Transnational Group" style="height:42px; mix-blend-mode: screen;"></a>
+            <a href="index.html" class="logo"><img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663752346972/UtMhcZkYSXunXleZ.jpg" alt="Transnational Group" style="height:42px;"></a>
             <nav>
                 <ul>
                     <li><a href="index.html">首頁</a></li>
@@ -107,85 +107,94 @@
 
     <section>
         <div class="container">
-            <div class="intro-text">
-                我們提供多元化的高品質產品與物流解決方案，滿足客戶在安全、效率與創新方面的需求。
+            <div class="section-title">
+                <h2>專業安全包材</h2>
+                <p>Security Packaging Products</p>
             </div>
-
             <div class="product-grid">
                 <div class="product-card">
-                    <div class="product-icon"><i class="fas fa-stamp"></i></div>
+                    <div class="product-img" style="background-image: url('https://www.transnational-grp.com/wp-content/uploads/2023/02/TydenClip-Security-Seal_d.jpg');"></div>
                     <div class="product-info">
-                        <h3>Tamper-Evident Security Seals 防偽安全封條</h3>
-                        <p>我們提供與各式快遞袋搭配使用的防偽安全封條，每個封條均有條碼編號，提供黃、白、綠、藍、紅等多色選擇，確保交接過程的唯一性與不可竄改性。</p>
+                        <h3>Security Seals</h3>
+                        <p>TydenClip 安全封條，一次性破壞設計，確保物件未經授權不得開啟。</p>
                     </div>
                 </div>
                 <div class="product-card">
-                    <div class="product-icon"><i class="fas fa-shopping-bag"></i></div>
+                    <div class="product-img" style="background-image: url('https://www.transnational-grp.com/wp-content/uploads/2023/02/TydenBrooks-Bags-and-Seal.jpg');"></div>
                     <div class="product-info">
-                        <h3>Tamper-Evident Security Bag 防偽安全袋</h3>
-                        <p>耐用且可重複使用的快遞袋，透過安全封條提供防偽功能。提供多種尺寸與配置，滿足文件、現金及資產處理等多元需求，符合國際金融配送標準。</p>
+                        <h3>Security Bag</h3>
+                        <p>TydenBrooks 高強度保密袋，防割防刺穿，專為金融票據設計。</p>
                     </div>
                 </div>
                 <div class="product-card">
-                    <div class="product-icon"><i class="fas fa-briefcase-medical"></i></div>
+                    <div class="product-img" style="background-image: url('https://www.transnational-grp.com/wp-content/uploads/2023/02/TydenBags_d-1.jpg');"></div>
                     <div class="product-info">
-                        <h3>Secure Medical Carriers 醫療安全載具</h3>
-                        <p>配備隔熱保護層，可監控並維持內容物溫度長達20小時。堅固且具抗菌特性，為實驗室及醫療用戶提供安全、可靠的溫控生物材料運送方案。</p>
+                        <h3>Medical Carriers</h3>
+                        <p>醫療專用溫控運送袋，確保生物檢體與藥品在適宜環境下傳遞。</p>
                     </div>
                 </div>
                 <div class="product-card">
-                    <div class="product-icon"><i class="fas fa-box-open"></i></div>
+                    <div class="product-img" style="background-image: url('https://www.transnational-grp.com/wp-content/uploads/2023/02/TydenBags_b-1.jpg');"></div>
                     <div class="product-info">
-                        <h3>Smart Security Containers 智能安全箱 (FMTec SECOLO)</h3>
-                        <p>專為保護、監控及追蹤貴重物品而設計。具備智能鎖定、遠端解鎖、長距離識別、防盜警報、事件紀錄、環境感測器及資料記錄等進階安全功能。</p>
+                        <h3>Smart Containers</h3>
+                        <p>FMTec 智能安全箱，結合 RFID 與電子鎖控技術的最高等級防護方案。</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="solution-section">
+    <section class="solutions-section">
         <div class="container">
             <div class="section-title">
-                <h2>全方位解決方案</h2>
-                <p>Comprehensive Solutions</p>
+                <h2 style="color: #fff;">九大核心解決方案</h2>
+                <p style="color: var(--secondary-color);">9 Core Solutions</p>
             </div>
-            <div class="solution-grid">
+            <div class="solutions-grid">
                 <div class="solution-item">
-                    <h4>Distribution Management</h4>
-                    <p>配送管理</p>
+                    <i class="fas fa-university"></i>
+                    <h4>金融物流</h4>
+                    <p>專業票據、有價證券與現金處理配送。</p>
                 </div>
                 <div class="solution-item">
-                    <h4>Mail & Mailroom Management</h4>
-                    <p>郵件與收發室管理</p>
+                    <i class="fas fa-hospital"></i>
+                    <h4>醫療物流</h4>
+                    <p>檢體、疫苗與高價值藥品之溫控安全運送。</p>
                 </div>
                 <div class="solution-item">
-                    <h4>Information and Records Management</h4>
-                    <p>資訊與檔案管理</p>
+                    <i class="fas fa-shield-alt"></i>
+                    <h4>安全包材</h4>
+                    <p>提供各式防偽封條與防破壞包裝產品。</p>
                 </div>
                 <div class="solution-item">
-                    <h4>Medical Distribution</h4>
-                    <p>醫療配送</p>
+                    <i class="fas fa-microchip"></i>
+                    <h4>智慧系統</h4>
+                    <p>RFID Logi-Q 物件追蹤與資產管理系統。</p>
                 </div>
                 <div class="solution-item">
-                    <h4>Cash Management</h4>
-                    <p>現金管理</p>
+                    <i class="fas fa-truck-loading"></i>
+                    <h4>供應鏈管理</h4>
+                    <p>端到端的物流優化與倉儲分撥方案。</p>
                 </div>
                 <div class="solution-item">
-                    <h4>Security Solutions</h4>
-                    <p>安全管理</p>
+                    <i class="fas fa-desktop"></i>
+                    <h4>收發室外包</h4>
+                    <p>企業收發室專業人力與系統化管理服務。</p>
                 </div>
                 <div class="solution-item">
-                    <h4>Electronic Document Imaging</h4>
-                    <p>電子文件影像歸檔</p>
+                    <i class="fas fa-file-contract"></i>
+                    <h4>文件數位化</h4>
+                    <p>重要文件掃描、索引與電子簽核整合。</p>
                 </div>
                 <div class="solution-item">
-                    <h4>Digital Signing and Workflow Automation</h4>
-                    <p>數位簽核與流程自動化</p>
+                    <i class="fas fa-user-tie"></i>
+                    <h4>企業禮賓</h4>
+                    <p>高端商務快遞與企業專屬配送專員服務。</p>
                 </div>
                 <div class="solution-item">
-                    <h4>Middleware API Management Solutions</h4>
-                    <p>API 中介軟體管理</p>
+                    <i class="fas fa-leaf"></i>
+                    <h4>永續物流</h4>
+                    <p>ESG 綠色物流方案與循環包材應用。</p>
                 </div>
             </div>
         </div>
@@ -195,7 +204,7 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
-                    <h4 class="logo"><img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663752346972/UtMhcZkYSXunXleZ.jpg" alt="Transnational Group" style="height:42px; mix-blend-mode: screen;"></h4>
+                    <h4 class="logo"><img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663752346972/UtMhcZkYSXunXleZ.jpg" alt="Transnational Group" style="height:42px;"></h4>
                     <p>新加坡商德安中華有限公司台灣分公司，專業金融物流服務領導者，深耕台灣四十載。</p>
                 </div>
                 <div class="footer-col">
